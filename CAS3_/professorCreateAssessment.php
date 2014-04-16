@@ -1,7 +1,7 @@
 <?php include('inc/header.php'); ?>
 <?php include('inc/dbSetup.php'); ?>
 
-<!-- This page is respobsible for taking data from the professor. 
+<!-- This page is responsible for taking data from the professor. 
 
 Professor enters what course they want to create an assessment for and choose a section
 After clicking continue an assessment object should be created with the attributes of
@@ -27,7 +27,7 @@ section: course section
   {
 
   ?>
-
+  <form method="POST" action="addQuestions.php" >
     <div class = "small-3 large-6 columns">
          <h3>Create Assessment</h3><br><br>
          <label>Course: 
@@ -48,12 +48,25 @@ section: course section
           </select>
         </label>
 
+        <label>Number of Questions: 
+          <select name="questionSelect"> <!-- Added name -->
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+        </label>
+
     
         <div class="small-6 small-centered columns">
-          <a href="#" class="button expand alert"> Continue </a>
+          <input class="center button [tiny small large]" type="submit" value="Create" />
         </div>  
-
-          
+  </form>
+         
           
       </div>
 
