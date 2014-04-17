@@ -3024,6 +3024,7 @@ p {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.25rem;
+  color: brown;
   text-rendering: optimizeLegibility; }
   p.lead {
     font-size: 1.21875rem;
@@ -3222,7 +3223,13 @@ blockquote p {
     font-size: 1.6875rem; }
 
   h4 {
-    font-size: 1.4375rem; } }
+    font-size: 1.4375rem;
+	color: purple;		
+	} 
+  h5 {
+	color: green;
+    }
+	}
 /*
  * Print styles.
  *

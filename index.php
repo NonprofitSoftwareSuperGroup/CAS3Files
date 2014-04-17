@@ -24,7 +24,7 @@
         <input type="text" name="username" placeholder="Username" /><!-- name added for post -->
       </label>
       <label>
-        <input type="text" name="password" placeholder="Password" />
+        <input type="password" name="password" placeholder="Password" />
       </label>
       <a href="javascript:document.profForm.submit()"
 	  class="button [tiny small large]">Professor Login</a>
@@ -38,7 +38,7 @@
   <div class="row">
     <div class="large-4 columns">
       <label>Student Login
-        <input type="text" name="otk" placeholder="OneTimeKey" />
+        <input type="password" name="otk" placeholder="OneTimeKey" />
       </label>
 
     </div>

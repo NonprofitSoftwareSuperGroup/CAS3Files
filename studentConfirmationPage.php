@@ -4,7 +4,7 @@
 
 
 <div class="row">
-  <div class="small-6 small-centered columns"> <h5>  STUDENT CONFIRMATION PAGE </h5> </div>
+  <div class="small-4 small-centered columns"> <h5>  STUDENT CONFIRMATION PAGE </h5> </div>
 </div>
 
 
@@ -51,21 +51,19 @@ foreach ($post as $row)
 	{
 		if($element==$OTK&&$OTK!='')
 		{
-			?>
-
-			<div class="row">
-  				<div class="small-6 large-centered columns">
-
-			<?php
-			echo "Is " .$course. " the correct class?";
-			?>
-
-				</div>
-			</div>
-
-			<?php
+			//echo "Is " .$course. " the correct class?";//replace with html later
 			$check = false;
-			//add buttons here
+			?>
+				<div class="row">
+						<?php
+					  echo '<div class="small-7 small-centered columns"> <h4>  Is ' . $course . ' the correct class? If so click continue. </h4> </div>';
+						?>
+					<div class="small-7 small-centered columns">
+						<a href="sampleQuestion.php" class="button expand alert"> Continue </a>
+					</div>	
+				</div>
+
+			<?php
 
 		}
 	}
@@ -75,10 +73,10 @@ if($check == true)
 	?>
 
 	<div class="row">
-  				<div class="small-6 large-centered columns">
+  				<div class="small-4 large-centered columns">
 
 			<?php
-			echo "Wrong OneTimeKey";
+			echo '<h4>Wrong OneTimeKey! <br> Press HOME to go back.</h4>';
 			?>
 
 				</div>
@@ -88,11 +86,6 @@ if($check == true)
 }
 
 ?>
-<div class="row">
-	<div class="small-3 small-centered columns">
-  		<a href="#" class="button expand alert"> Continue </a>
-  	</div>	
-</div>
 
 
 <?php include('inc/footer.php'); ?>

@@ -1,24 +1,23 @@
 <?php include('inc/header.php'); ?>
-<?php include('inc/dbSetup.php'); ?>
 
-
-	<!--  This is a sample question page. -->
-<!--  Please check out Foundation 5 framework if you plan on changing any of the visuals -->
+<script type="text/javascript" src="js/custom.js"></script>
 
 <div class="row">
- <div class="small-6 large-2 columns"> Left part of the grid</div>
-
-  <div class="small-6 large-8 columns">
-  <h1> PAGE CONTENT GOES IN HERE! </h1>
-
-  	<p> Use this page to create new pages, it was created using foundation 5 CSS framework 
-  	so if you should definitely look into that </p>
-
-
-  </div>
-
- <div class="small-12 large-2 columns"> Right part of the grid</div>
+  <div class="small-10 small-left columns"> <p>This is a sample question, if you need help you can click the HELP button in the upper left corner at
+ anytime.</p> </div>
 </div>
 
+
+  <div class="row">
+    <div class="large-6 columns">
+      <label style="color: red"> Select Answer A then hit continue</label>
+	  <input type="radio" name="ans" value="correct" id="ans"><label for="ans">Answer A</label><br>
+      <input type="radio" name="ans" value="wrong" id="ans"><label for="ans">Answer B</label><br>
+      <input type="radio" name="ans" value="wrong" id="ans"><label for="ans">Answer C</label><br>
+	  <input type="radio" name="ans" value="wrong" id="ans"><label for="ans">Answer D</label><br>
+      <a href="#" onclick="answer();return false;"
+	  class="button [tiny small large]">Continue</a>
+    </div>
+  </div>
 
 <?php include('inc/footer.php'); ?>
