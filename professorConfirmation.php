@@ -1,6 +1,6 @@
 <?php include('inc/header.php'); ?>
 <?php include('inc/dbSetup.php'); ?>
-<?php include('StudentClass.php'); ?>
+<?php include('class/StudentClass.php'); ?>
 
 	<!--  This is a sample question page. -->
 <!--  Please check out Foundation 5 framework if you plan on changing any of the visuals -->
