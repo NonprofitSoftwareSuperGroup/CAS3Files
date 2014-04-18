@@ -16,7 +16,7 @@
   <!-- Before there was one form and now there are two -->
   
   <!-- Sends input from the profesor fields to professorhomepage.php -->
-  <form action="professorhomepage.php" name="profForm" method="POST">
+  <form action="index.php" name="profForm" method="POST">
 
   <div class="row">
     <div class="large-6 columns">
@@ -26,12 +26,13 @@
       <label>
         <input type="password" name="password" placeholder="Password" />
       </label>
-      <a href="javascript:document.profForm.submit()"
-	  class="button [tiny small large]">Professor Login</a>
+      <input class="center button [tiny small large]" type="submit" value="Login" />
 	  <!-- javascript used so post can be used instead of get -->
     </div>
   </div>
   </form>
+  <!-- checks if professor login is valid then allows him access to next page -->
+ <?php include('class/loginModule.php'); ?>
   
   <form action="studentConfirmationPage.php" name="studentForm" method="POST">
 
@@ -55,8 +56,7 @@
           <option value="CMPT-372">CMPT-372</option>
         </select>
       </label>
-      <a href="javascript:document.studentForm.submit()" 
-	  class="button [tiny small large]">Student Login</a>
+      <input class="center button [tiny small large]" type="submit" value="Login" />
     </div>
   </div>
   

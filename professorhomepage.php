@@ -6,7 +6,25 @@
   <div class="small-6 large-2 columns"> Left part of the grid</div>
 
   <div class = "small-3 large-6 columns">
-  	 <h3>Welcome Professor</h3><br><br>
+
+
+  <?php
+
+  include('class/loginModule.php');
+
+  
+  //Code to display professor traits
+        
+        
+
+       
+        
+
+  ?>      
+      
+      
+
+  	 <h3>Welcome Professor, </h3><br><br>
   	 <label><h4>Edit Your Assessments:</h4>
 
      <form method="POST" action="professorCreateAssessment.php" >
