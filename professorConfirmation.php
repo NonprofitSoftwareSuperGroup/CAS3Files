@@ -47,6 +47,14 @@
 		for($y = 0; $y < $emailCount; $y++){
 			$students[$y]->key = rand(1000, 9999);
 			$students[$y]->email = $emailArray[$y];
+			$email = $students[$y]->email;
+			$otk = $students[$y]->key;
+			$used = "NO";
+
+			//add variables to database
+			$query = "INSERT INTO students (email, otk, used) VALUES ('$email','$otk','$used')";
+			$result = mysql_query($query) or die(mysql_error());
+
 		}
 
 	
@@ -56,10 +64,17 @@
 	
 	
 	
-	var_dump($students);
+	//var_dump($students);
+
+	
 	
 
+
+
 	?>
+
+
+
 
 
   </div>

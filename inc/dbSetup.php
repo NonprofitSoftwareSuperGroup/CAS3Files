@@ -3,7 +3,24 @@
 <?php
 
 
-$db = new mysqli("localhost", "student");
+//$db = mysqli_connect("localhost", "student");
+
+//database setup
+
+$host = "localhost";
+$user = "student";
+$pass = "";
+$db = "cas3database";
+
+	
+$con = mysql_connect($host,$user);
+if(!$con){
+	die("Cannot Connect: " . mysql_error());
+}else{
+	echo "Connected!----";
+}
+	
+mysql_select_db($db,$con);
 
 
 ?>
