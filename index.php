@@ -1,6 +1,7 @@
 <?php include('inc/header.php'); ?>
 <?php include('inc/dbSetup.php'); ?>
 
+
 <!--  This is the home page, this is where a user can login as either a professor or student -->
 <!--  Please check out Foundation 5 framework if you plan on changing any of the visuals -->
 
@@ -34,7 +35,7 @@
   <!-- checks if professor login is valid then allows him access to next page -->
  <?php include('class/loginModule.php'); ?>
   
-  <form action="studentConfirmationPage.php" name="studentForm" method="POST">
+  <form action="index.php" name="studentForm" method="POST">
 
   <div class="row">
     <div class="large-4 columns">
@@ -61,6 +62,8 @@
   </div>
   
 </form>
+
+ <?php include('class/studentLoginModule.php'); ?>
 
 </div>
   <div class="small-12 large-2 columns"> Right part of the grid</div>
