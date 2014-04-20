@@ -9,9 +9,7 @@
 
 
 <?php
-
  include('class/loginModule.php');
-
  ?>
 				<div class="row">
 						<?php session_start();

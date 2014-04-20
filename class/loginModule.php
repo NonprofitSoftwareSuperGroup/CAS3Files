@@ -34,12 +34,16 @@ $course = $_POST["courseSelect"];
 $OTK = $_POST["otk"];
 
 $query2 = "SELECT * FROM students WHERE course='".$course."' AND otk='".$OTK."' LIMIT 1";
-$result2 = mysql_query($query2) or die(mysql_error());		
+$result2 = mysql_query($query2) or die(mysql_error());
+
+$row=mysql_fetch_row($result2);//used to get index
+//echo $row[0];
 
     if(mysql_num_rows($result2) == 1)
 	{
 		session_start();
-		$_SESSION['courseName']=$course;
+		$_SESSION['courseName']=$course;//used in surveyAssessment.php
+		$_SESSION['rowIndex']=$row[0];//used in studentFarewell.php
         echo "Thanks for logging in";
 
         print "<script>";
@@ -52,6 +56,7 @@ $result2 = mysql_query($query2) or die(mysql_error());
 	{
         echo "invalid login info";
     }
+
 	
 }
 
