@@ -11,7 +11,7 @@
   <div class="small-6 large-8 columns">
   <h1> PAGE CONTENT GOES IN HERE! </h1>
   <?php session_start();
-		echo $_SESSION['courseName']; //split the course name to get section?>
+		echo $_SESSION['courseName'] . '-' . $_SESSION['section']; //split the course name to get section?>
 
   	<p> Use this page to create new pages, it was created using foundation 5 CSS framework 
   	so if you should definitely look into that </p>

@@ -13,7 +13,7 @@
  ?>
 				<div class="row">
 						<?php session_start();
-					  echo '<div class="small-7 small-centered columns"> <h4>  Is ' . $_SESSION['courseName'] . ' the correct class? If so click continue. </h4> </div>';
+					  echo '<div class="small-7 small-centered columns"> <h4>  Is ' . $_SESSION['courseName'] .'-'. $_SESSION['section'] .' the correct class? If so click continue. </h4> </div>';
 						?>
 					<div class="small-7 small-centered columns">
 						<a href="sampleQuestion.php" class="button expand alert"> Continue </a>
