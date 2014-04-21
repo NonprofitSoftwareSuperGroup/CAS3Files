@@ -3,7 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2014 at 09:23 PM
+
+-- Generation Time: Apr 20, 2014 at 10:42 PM
+
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -23,29 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courseotkmatch`
---
-
-CREATE TABLE IF NOT EXISTS `courseotkmatch` (
-  `course` text COLLATE utf8_unicode_ci NOT NULL,
-  `otk` text COLLATE utf8_unicode_ci,
-  `otk2` text COLLATE utf8_unicode_ci,
-  `otk3` text COLLATE utf8_unicode_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Used to check if OTK matches course';
-
---
--- Dumping data for table `courseotkmatch`
---
-
-INSERT INTO `courseotkmatch` (`course`, `otk`, `otk2`, `otk3`) VALUES
-('CMPT-280', 'ABC', 'otk2', NULL),
-('CMPT-281', 'password', NULL, NULL),
-('CMPT-371', 'ABC', NULL, NULL),
-('CMPT-372', 'new', 'abc', 'text');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `professor`
 --
 
@@ -60,7 +39,35 @@ CREATE TABLE IF NOT EXISTS `professor` (
 
 INSERT INTO `professor` (`username`, `password`) VALUES
 ('ben', 'pass'),
+('user1', 'go'),
+('ben', 'pass'),
 ('user1', 'go');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE IF NOT EXISTS `students` (
+  `index` double NOT NULL AUTO_INCREMENT,
+  `email` varchar(30) NOT NULL,
+  `otk` varchar(30) NOT NULL,
+  `used` varchar(5) NOT NULL,
+  `course` text NOT NULL,
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`index`, `email`, `otk`, `used`, `course`) VALUES
+(15, 'mike@aol.com', '9175', 'NO', 'CMPT-280!1'),
+(16, 'matt@aol.com', '7315', 'NO', 'CMPT-281!2'),
+(17, 'joe@aol.com', '3281', 'NO', 'CMPT-280!1'),
+(18, 'peter@aol.com', '3816', 'NO', 'CMPT-371!1'),
+(19, 'sam@aol.com', '5640', 'NO', 'CMPT-372!1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
