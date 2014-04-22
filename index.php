@@ -45,24 +45,12 @@
 
   <div class="row">
     <div class="large-6 columns">
-      <label>Course Name
+      <label>Course Selection
         <select name="courseSelect"> 
-          <option value="CMPT-280">CMPT-280</option>
-          <option value="CMPT-281">CMPT-281</option>
-          <option value="CMPT-371">CMPT-371</option>
-          <option value="CMPT-372">CMPT-372</option>
-        </select>
-      </label>
-	</div>
-  </div>
-  <div class="row">
-    <div class="large-6 columns">
-      <label>Course Section
-        <select name="courseSection"> 
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          <option value="CMPT-280!1">CMPT-280-1</option>
+          <option value="CMPT-281!2">CMPT-281-2</option>
+          <option value="CMPT-371!1">CMPT-371-1</option>
+          <option value="CMPT-372!1">CMPT-372-1</option>
         </select>
       </label>
       <input class="center button [tiny small large]" type="submit" value="Login" />
