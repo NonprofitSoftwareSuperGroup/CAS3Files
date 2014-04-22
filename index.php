@@ -25,7 +25,7 @@
       <label>
         <input type="password" name="password" placeholder="Password" />
       </label>
-      <input class="center button [tiny small large]" type="submit" value="Login" />
+      <input class="button expand alert" type="submit" value="Login" />
     </div>
   </div>
   </form>
@@ -53,7 +53,7 @@
           <option value="CMPT-372!1">CMPT-372-1</option>
         </select>
       </label>
-      <input class="center button [tiny small large]" type="submit" value="Login" />
+      <input class="button expand alert" type="submit" value="Login" />
     </div>
   </div>
   

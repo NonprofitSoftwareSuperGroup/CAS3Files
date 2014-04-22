@@ -9,7 +9,18 @@
  <div class="small-6 large-2 columns"> Left part of the grid</div>
 
   <div class="small-6 large-8 columns">
+
+  <!-- begin email table -->
+
   
+  
+  <table>
+  <thead>
+    <tr>
+      <th width="500">Emails</th>
+    </tr>
+  </thead>
+  <tbody>
 
   <?php
   //Print all emails and what one time key was sent to them.
@@ -43,6 +54,8 @@
 			$students[$s] = new Student();
 		}
 
+		
+
 	//add random key and email to each student object
 		for($y = 0; $y < $emailCount; $y++){
 			$students[$y]->key = rand(1000, 9999);
@@ -62,29 +75,23 @@
 			$message = "Your email is: " . $email . " and your One Time Key is " . $otk;
 
 			mail($email,$subject,$message,"From: System");
-    		echo "Thank you for sending us feedback";
+    		//echo "Thank you for sending us feedback";
+    		
+    		//print every email sent to the screen
+    		?> <tr><td> <?php echo $email; ?> </tr></td> <?php
+    		
 
 		}
+		//displays all array of students
+ //var_dump($students);
 
-	
+?>
 
-		
-		
-	
-	
-	
-	var_dump($students);
+</tbody>
+</table>
 
-	
-	
-
-
-
-	?>
-
-
-
-
+<p> You have now completed a CAS3 assessment.</p>
+<a href="professorhomepage.php" /><input class="button expand alert" value="Return Home" /> </a>
 
   </div>
 

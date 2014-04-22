@@ -20,13 +20,7 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="active"><a href="templetPage.php"> Sample Page</a></li>
-      <li class="has-dropdown">
-        <a href="#">Right Button Dropdown</a>
-        <ul class="dropdown">
-          <li><a href="#">First link in dropdown</a></li>
-        </ul>
-      </li>
+      <li class="alert"><a href="templetPage.php"> Sample Page</a></li>
     </ul>
 
     <!-- Left Nav Section -->
