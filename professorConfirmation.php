@@ -65,7 +65,7 @@
 	
 	
 	
-	//var_dump($students);
+	var_dump($students);
 
 	
 	
