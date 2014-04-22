@@ -56,7 +56,7 @@ a question form the number of forms depends on how many questions the professor 
       <!-- This space is the empty question form -->
       <form action="sendEmails.php" name="#" method="POST">
         <label>
-         <input type="text" name="question<?php $i+1; ?>" placeholder="Question: <?php echo $i + 1; ?> " /><!-- name added for post -->
+         <input type="text" name="question<?php echo $i+1; ?>" placeholder="Question: <?php echo $i + 1; ?> " /><!-- name added for post -->
         </label>
 
         <?php for($y = 0; $y < 4; $y++){ //open for loop to display answer space ?>
