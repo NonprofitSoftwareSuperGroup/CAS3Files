@@ -3,9 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
-
--- Generation Time: Apr 20, 2014 at 10:42 PM
-
+-- Generation Time: Apr 21, 2014 at 09:33 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -55,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `otk` varchar(30) NOT NULL,
   `used` varchar(5) NOT NULL,
   `course` text NOT NULL,
+  `section` int(11) NOT NULL,
   PRIMARY KEY (`index`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
@@ -62,12 +61,12 @@ CREATE TABLE IF NOT EXISTS `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`index`, `email`, `otk`, `used`, `course`) VALUES
-(15, 'mike@aol.com', '9175', 'NO', 'CMPT-280!1'),
-(16, 'matt@aol.com', '7315', 'NO', 'CMPT-281!2'),
-(17, 'joe@aol.com', '3281', 'NO', 'CMPT-280!1'),
-(18, 'peter@aol.com', '3816', 'NO', 'CMPT-371!1'),
-(19, 'sam@aol.com', '5640', 'NO', 'CMPT-372!1');
+INSERT INTO `students` (`index`, `email`, `otk`, `used`, `course`, `section`) VALUES
+(15, 'mike@aol.com', '9175', 'NO', 'CMPT-280', 1),
+(16, 'matt@aol.com', '7315', 'NO', 'CMPT-281', 2),
+(17, 'joe@aol.com', '3281', 'NO', 'CMPT-280', 1),
+(18, 'peter@aol.com', '3816', 'NO', 'CMPT-371', 1),
+(19, 'sam@aol.com', '5640', 'NO', 'CMPT-372', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
