@@ -56,6 +56,14 @@
 			$query = "INSERT INTO students (email, otk, used) VALUES ('$email','$otk','$used')";
 			$result = mysql_query($query) or die(mysql_error());
 
+			//Send emails and keys
+
+			$subject = "Welcome to CAS3 testing system.";
+			$message = "Your email is: " . $email . " and your One Time Key is " . $otk;
+
+			mail($email,$subject,$message,"From: System");
+    		echo "Thank you for sending us feedback";
+
 		}
 
 	
