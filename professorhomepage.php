@@ -8,13 +8,10 @@
   <div class = "small-3 large-6 columns">
 
 
-  <?php
-
-  include('class/loginModule.php');
-
-  
+  <?php  
   //Code to display professor traits
-        
+
+
         
 
        

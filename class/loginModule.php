@@ -8,6 +8,8 @@ if(isset($_POST['username']) && isset($_POST['password']))
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        $prof = new $Professor($username, $password);
+
         $query = "SELECT * FROM professor WHERE username='".$username."' AND password='".$password."' LIMIT 1";
         $result = mysql_query($query) or die(mysql_error());
 
