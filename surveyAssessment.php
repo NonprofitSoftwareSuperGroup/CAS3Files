@@ -1,4 +1,4 @@
-<!-- surveyAssessment.php -->
+<!-- surveyassessment.php -->
 
 <? php include('inc/header.php'); ?>
 
@@ -26,7 +26,7 @@
 			echo "<select name="Question .$i.">"
 				for ($x=0; $x < $length; x++)
 				{
-					echo "<option value=". $array[$x] .">". $array[$x] ."</option>"
+					echo "<input type="radio" name="ans" value=". $array[$x] .">". $array[$x] . "<br>";
 				 
 				}
 			echo "</select>"
