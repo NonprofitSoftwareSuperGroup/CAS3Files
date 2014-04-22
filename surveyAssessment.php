@@ -1,4 +1,4 @@
-<!-- surveyAssessment.php -->
+<!-- surveyassessment.php -->
 
 <? php include('inc/header.php'); ?>
 
@@ -39,14 +39,14 @@
 
 <form method="POST" action="submitSA.php">
 	<? php
-		$length = count($arrayAnswers);
+		$length = (count($numberQuestions))  x 4; //each question will have 4 answers
 
-		for($i=0; $i < questionList.length; $i++) 
+		for($i=0; $i < $numberQuestions; $i++) 
 		{
 			echo "<select name="Question .$i.">"
 				for ($x=0; $x < $length; x++)
 				{
-					echo "<option value=". $array[$x] .">". $array[$x] ."</option>"
+					echo "<input type="radio" name="ans" value=". $array[$x] .">". $array[$x] . "<br>";
 				 
 				}
 			echo "</select>"
