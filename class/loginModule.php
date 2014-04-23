@@ -37,15 +37,15 @@ $section = $_POST["courseSection"];
 $query2 = "SELECT * FROM students WHERE course='".$course."' AND otk='".$OTK."' AND section='".$section."' LIMIT 1";
 $result2 = mysql_query($query2) or die(mysql_error());
 
-$row=mysql_fetch_row($result2);//used to get index
-//echo $row[0];
+$row=mysql_fetch_row($result2);//used to get email
+//echo $row[1];
 
     if(mysql_num_rows($result2) == 1)
 	{
 		session_start();
 		$_SESSION['courseName']=$course;//used in surveyAssessment.php
 		$_SESSION['section']=$section;//used in surveyAssessment.php
-		$_SESSION['rowIndex']=$row[0];//used in studentFarewell.php
+		$_SESSION['email']=$row[1];//used in studentFarewell.php
         echo "Thanks for logging in";
 
         print "<script>";
