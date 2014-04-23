@@ -11,8 +11,12 @@
   <div class="small-6 large-8 columns">
   <h1> PAGE CONTENT GOES IN HERE! </h1>
   <?php session_start();
-  echo $_SESSION['rowIndex'];  //use to set used to YES?>
-
+  $email = $_SESSION['email'];  //use to set used to delete row, can get rid of used
+  echo $email;
+  
+  $query3 = "DELETE FROM students WHERE email='".$email."' LIMIT 1";
+  $result3 = mysql_query($query3) or die(mysql_error());
+  ?>
   	<p> Use this page to create new pages, it was created using foundation 5 CSS framework 
   	so if you should definitely look into that </p>
 
