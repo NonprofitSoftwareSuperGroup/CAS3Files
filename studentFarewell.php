@@ -11,11 +11,16 @@
   <div class="small-6 large-8 columns">
   <h1> PAGE CONTENT GOES IN HERE! </h1>
   <?php session_start();
-  $email = $_SESSION['email'];  //use to set used to delete row, can get rid of used
-  echo $email;
+  $email = $_SESSION['email'];  //use to set used to delete row
+  $course = $_SESSION['courseName'];
+  $section = $_SESSION['section'];
+  //echo $email;
+  //echo $course;
+  //echo $section;
   
-  $query3 = "DELETE FROM students WHERE email='".$email."' LIMIT 1";
+  $query3 = "DELETE FROM students WHERE email='".$email."' AND section='".$section."' AND course='".$course."' LIMIT 1";
   $result3 = mysql_query($query3) or die(mysql_error());
+  //this deletes the row of the OTK that was used
   ?>
   	<p> Use this page to create new pages, it was created using foundation 5 CSS framework 
   	so if you should definitely look into that </p>
