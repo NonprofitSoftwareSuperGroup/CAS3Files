@@ -4,13 +4,13 @@
 <dl class="accordion" data-accordion>
   <dd>
     <a href="#panel1">Login</a>
-    <div id="panel1" class="content active">
+    <div id="panel1" class="content">
       <dl class="tabs" data-tab>
         <dd class="active"><a href="#panel2-1">Professor</a></dd>
         <dd><a href="#panel2-2">Student</a></dd>
       </dl>
       <div class="tabs-content">
-        <div class="content active" id="panel2-1">
+        <div class="content" id="panel2-1">
           <p>To log in as a professor you will use the username 
           given to you by the Department head. All defaul passwords are set to 
           1234 by default</p>
@@ -25,16 +25,24 @@
       </div>
     </div>
   </dd>
-  <dd>
-    <a href="#panel2">Other</a>
+    <dd>
+    <a href="#panel2">Sample Question</a>
     <div id="panel2" class="content">
-     This space is reserved for other issues that the user might run into.
+		<p>A is the correct answer. When you submit an answer and its wrong a window 
+		telling you this should pop up. Only one answer can be selected at a time. After
+		correctly answering the question, you should be taken to the proper course assessment.</p>
     </div>
   </dd>
   <dd>
-    <a href="#panel3">Report Issues</a>
+    <a href="#panel3">Other</a>
     <div id="panel3" class="content">
-      To report bugs please email admin@CAS3.com
+     <p>This space is reserved for other issues that the user might run into.</p>
+    </div>
+  </dd>
+  <dd>
+    <a href="#panel4">Report Issues</a>
+    <div id="panel4" class="content">
+      <p>To report bugs please email admin@CAS3.com</p>
     </div>
   </dd>
 </dl>
