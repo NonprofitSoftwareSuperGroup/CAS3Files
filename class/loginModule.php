@@ -45,7 +45,7 @@ $row=mysql_fetch_row($result2);//used to get email
 		session_start();
 		$_SESSION['courseName']=$course;//used in surveyAssessment.php
 		$_SESSION['section']=$section;//used in surveyAssessment.php
-		$_SESSION['email']=$row[1];//used in studentFarewell.php
+		$_SESSION['email']=$row[0];//used in studentFarewell.php
         echo "Thanks for logging in";
 
         print "<script>";
