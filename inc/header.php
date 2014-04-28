@@ -17,20 +17,14 @@
     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
 
+ 
   <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="alert"><a href="templetPage.php"> Sample Page</a></li>
-    </ul>
 
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li><a href="helpPage.php">HELP</a></li>
+    <ul class="right">
+      <li class="alert"><a href="helpPage.php">HELP</a></li>
     </ul>
   </section>
 </nav>
   
 
-	<div id="noValidNameYet">
-
- 
+</body>
