@@ -44,6 +44,18 @@
   		
   		
   </div>
+  
+  <?php
+$name = $_POST['createOrModify'];
+if ($name == "create")
+{
+	header('Location: professorCreateAssessment.php');
+}
+if($name == "modify")
+{
+	header('Location: modifyAssessment.php');
+}
+?>
 
   <div class="small-6 large-2 columns"> Right part of the grid</div>
 
