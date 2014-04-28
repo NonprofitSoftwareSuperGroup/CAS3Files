@@ -79,22 +79,15 @@ section: course section
 
 
   <?php
-
   } else {
-  
-  ?>
-
-
-   <div class="small-3 large-6 columns"> 
-  This will be the home to the edit/modify assessment page
-  </div>
-
-
-  <?php
-
+  if($value == "modify")
+   {
+    header('Location: modifyAssessment.php');
+   }
   }
-
   ?>
+  
+
 
 
 
