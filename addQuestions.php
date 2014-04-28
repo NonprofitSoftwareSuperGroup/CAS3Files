@@ -1,6 +1,6 @@
 <?php include('inc/header.php'); ?>
 <?php include('inc/dbSetup.php'); ?>
-
+<?php include('class/questionClass.php');?>
 <!-- This page is respobsible for taking data from the professorCreateAssessment page
 This page will display the course name and section selected from previous page. The professor 
 can select the number of questions that he would like and the page will dynamically display 
@@ -22,6 +22,9 @@ a question form the number of forms depends on how many questions the professor 
   $exam = $_POST['examSelect'];
 
   ?>
+  
+  
+  
 
   <div>
   <h4>
@@ -49,28 +52,39 @@ a question form the number of forms depends on how many questions the professor 
 
       <!-- This is a loop to display correct number of questions spaces to be displayed and filled in -->
       
-      <?php for($i = 0; $i < $questions; $i++){ //open for loop to display question space ?>
+      <?php for($i = 1; $i <= $questions; $i++){ //open for loop to display question space ?>
 
-      <h3> Question: <?php echo $i + 1; ?> </h3>
+      <h3> Question: <?php echo $i; ?> </h3>
 
       <!-- This space is the empty question form -->
-      <form action="sendEmails.php" name="#" method="POST">
+      <form action="confirmAssessment.php" name="#" method="POST">
         <label>
-         <input type="text" name="question<?php $i+1; ?>" placeholder="Question: <?php echo $i + 1; ?> " /><!-- name added for post -->
+         <input type="text" name="question<?php echo $i;?>" placeholder="Question: <?php echo $i + 1; ?> " /><!-- name added for post -->
         </label>
 
-        <?php for($y = 0; $y < 4; $y++){ //open for loop to display answer space ?>
+      
+		<?php for($y = 1; $y <= 4; $y++){ //open for loop to display answer space ?>
         <label for="answer">
-         <input id="checkbox1" type="checkbox"><label for="checkbox1"><?php echo $y+1; ?></label>
-         <input type="answer" name="password" placeholder="Answer<?php echo $y+1; ?>" />
+         <input name = "checkbox<?php echo $i.$y;?>" value = "<?php echo $i.$y;?>" type="checkbox"><label for="checkbox1"><?php echo $y; ?></label>
+         <input type="text" name="answer<?php echo $i.$y;?>" placeholder="Answer<?php echo $y; ?>" />
         </label>
-        <?php }//closes for loop to display answer spaces ?>
+        <?php }
+		
+		//closes for loop to display answer spaces ?>
 
         
 
-      <?php }//closes for loop to display questions ?>
+      <?php }
+	  session_start();
+		
+		
+		$_SESSION['exam'] = $exam;
+		$_SESSION['course'] = $course;
+		$_SESSION['questions'] = $questions;
+		$_SESSION['section'] = $section;
+		//closes for loop to display questions ?>
 
-        <input class="center button [tiny small large]" type="submit" value="Create" />
+        <input class="center button [tiny small large]" type="submit" value="Confirm" />
       </form>
   
           
