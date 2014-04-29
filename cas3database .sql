@@ -3,9 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
-
--- Generation Time: Apr 20, 2014 at 10:42 PM
-
+-- Generation Time: Apr 23, 2014 at 07:36 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -50,24 +48,21 @@ INSERT INTO `professor` (`username`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `students` (
-  `index` double NOT NULL AUTO_INCREMENT,
   `email` varchar(30) NOT NULL,
   `otk` varchar(30) NOT NULL,
-  `used` varchar(5) NOT NULL,
   `course` text NOT NULL,
-  PRIMARY KEY (`index`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+  `section` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`index`, `email`, `otk`, `used`, `course`) VALUES
-(15, 'mike@aol.com', '9175', 'NO', 'CMPT-280!1'),
-(16, 'matt@aol.com', '7315', 'NO', 'CMPT-281!2'),
-(17, 'joe@aol.com', '3281', 'NO', 'CMPT-280!1'),
-(18, 'peter@aol.com', '3816', 'NO', 'CMPT-371!1'),
-(19, 'sam@aol.com', '5640', 'NO', 'CMPT-372!1');
+INSERT INTO `students` (`email`, `otk`, `course`, `section`) VALUES
+('mike@aol.com', '9175', 'CMPT-280', 1),
+('matt@aol.com', '7315', 'CMPT-281', 2),
+('joe@aol.com', '3281', 'CMPT-280', 1),
+('sam@aol.com', '5640', 'CMPT-372', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

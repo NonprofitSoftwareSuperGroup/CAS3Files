@@ -17,7 +17,7 @@ $con = mysql_connect($host,$user);
 if(!$con){
 	die("Cannot Connect: " . mysql_error());
 }else{
-	echo "Connected!----";
+	//echo "Connected!----";
 }
 	
 mysql_select_db($db,$con);

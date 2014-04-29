@@ -3,13 +3,11 @@
 <? php include('inc/header.php'); ?>
 
 <div class="row">
-<<<<<<< HEAD
+
  <div class="small-6 large-2 columns"> Left part of the grid</div>
 
   <div class="small-6 large-8 columns">
   <h1> PAGE CONTENT GOES IN HERE! </h1>
-  <?php session_start();
-		echo $_SESSION['courseName']; //split the course name to get section?>
 
   	<p> Use this page to create new pages, it was created using foundation 5 CSS framework 
   	so if you should definitely look into that </p>
@@ -22,7 +20,7 @@
 
 
 <?php include('inc/footer.php'); ?>
-=======
+
 	<div class="small-6 large-2 columns"><a href="help.php">HELP</a></div>
 
 	<div class="small-6 large-8 columns">
@@ -63,4 +61,3 @@
 
 
 <?php include('inc/footer.php'); ?>
->>>>>>> FETCH_HEAD

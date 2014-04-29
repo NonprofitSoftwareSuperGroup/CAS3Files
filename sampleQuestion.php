@@ -3,7 +3,7 @@
 <script type="text/javascript" src="js/custom.js"></script>
 
 <div class="row">
-  <div class="small-10 small-left columns"> <p>This is a sample question, if you need help you can click the HELP button in the upper left corner at
+  <div class="small-10 small-left columns"> <p>This is a sample question, if you need help you can click the HELP button in the upper right corner at
  anytime.</p> </div>
 </div>
 

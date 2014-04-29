@@ -25,7 +25,7 @@
       
 
   	 <h3>Welcome Professor, </h3><br><br>
-  	 <label><h4>Edit Your Assessments:</h4>
+  	 <label><h4>Edit or Create:</h4>
 
      <form method="POST" action="professorCreateAssessment.php" >
           <select name="createOrModify">
@@ -33,17 +33,29 @@
             <option value="modify">Modify Existing Assessment</option>
   		    </select>
 
-          <input class="center button [tiny small large]" type="submit" value="Create" />
+          <input class="button expand alert" type="submit" value="Select" />
     
      </form>    
 
         </label><br><br>
   	  	
   		<p> You can view the progress your students have made and see the statistics of the completed S&As on our statistics page:</p>
-  		<a href="statspage.php" class = "button [tiny small large]">View Statistics</a>
+  		<a href="statspage.php" class = "button expand alert">View Statistics</a>
   		
   		
   </div>
+  
+  <?php
+$name = $_POST['createOrModify'];
+if ($name == "create")
+{
+	header('Location: professorCreateAssessment.php');
+}
+if($name == "modify")
+{
+	header('Location: modifyAssessment.php');
+}
+?>
 
   <div class="small-6 large-2 columns"> Right part of the grid</div>
 
