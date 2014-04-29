@@ -46,6 +46,8 @@
   </div>
   
   <?php
+  if(isset($_POST['createOrModify']))
+  {
 $name = $_POST['createOrModify'];
 if ($name == "create")
 {
@@ -54,6 +56,7 @@ if ($name == "create")
 if($name == "modify")
 {
 	header('Location: modifyAssessment.php');
+}
 }
 ?>
 
