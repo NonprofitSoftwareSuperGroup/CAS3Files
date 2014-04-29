@@ -10,7 +10,27 @@
 
   <div class="small-6 large-8 columns">
   
+ <?php
+  //Print all emails and what one time key was sent to them.
+  $emailCount = 0;
+  $emailArray = array();
 
+  for($i = 1; $i < 50; $i++){
+
+  	$email = $_POST['email' . $i];
+
+  	if($email != ""){
+  		
+  		$emailArray[$emailCount] = $email;
+  ?>
+
+  <p> <?php //echo "Email: " . $email;  ?> </p>
+  
+  <?php
+  		$emailCount++;
+  	}
+  }
+  ?>
  
 
 
