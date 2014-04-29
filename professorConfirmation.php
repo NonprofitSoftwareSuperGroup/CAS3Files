@@ -14,13 +14,6 @@
 
   
   
-<<<<<<< HEAD
- <?php
-  //Print all emails and what one time key was sent to them.
-  $emailCount = 0;
-  $emailArray = array();
-
-=======
   <table>
   <thead>
     <tr>
@@ -34,7 +27,6 @@
   $emailCount = 0;
   $emailArray = array();
 
->>>>>>> FETCH_HEAD
   for($i = 1; $i < 50; $i++){
 
   	$email = $_POST['email' . $i];
@@ -51,10 +43,6 @@
   	}
   }
   ?>
-<<<<<<< HEAD
- 
-=======
->>>>>>> FETCH_HEAD
 
 
   <?php

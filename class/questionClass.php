@@ -1,109 +1,81 @@
-<?php include('inc/header.php'); ?>
-<?php include('inc/dbSetup.php'); ?>
-<?php include('class/questionClass.php');?>
-<!-- This page is respobsible for taking data from the professorCreateAssessment page
-This page will display the course name and section selected from previous page. The professor 
-can select the number of questions that he would like and the page will dynamically display 
-a question form the number of forms depends on how many questions the professor wants. 
+<?php
+class Question {
 
- -->
+		var $answer1;
+		var $answer2;
+		var $answer3;
+		var $answer4;
+		var $question;
+		var $correctAnswers = array();
+		var $numCorrectAnswers;
 
-
-
-<div class="row">
-
-  <div class="small-6 large-3 columns"> 
-
-  <?php
-
-  $course = $_POST['courseSelect'];
-  $section = $_POST['sectionSelect'];
-  $questions = $_POST['questionSelect'];
-  $exam = $_POST['examSelect'];
-
-  ?>
-  
-  
-  
-
-  <div>
-  <h4>
-  This is the <?php echo $exam ?> assessment
-  for course <?php echo $course ?>
-  section <?php echo $section ?>
-  with <?php echo $questions ?> questions.
-  </h4>
-  </div>
-    
- </div>
-
-    
-
-  <div class = "small-3 large-6 columns">
-  
-
-      
-    <h3>
-    <?php
-    //Display page info, course, section, number if questions
-    echo $course . " - " . $section . " - Number of questions - " .$questions;
-    ?>
-    </h3>
-
-      <!-- This is a loop to display correct number of questions spaces to be displayed and filled in -->
-      
-      <?php for($i = 1; $i <= $questions; $i++){ //open for loop to display question space ?>
-
-      <h3> Question: <?php echo $i; ?> </h3>
-
-      <!-- This space is the empty question form -->
-      <form action="confirmAssessment.php" name="#" method="POST">
-        <label>
-         <input type="text" name="question<?php echo $i;?>" placeholder="Question: <?php echo $i + 1; ?> " /><!-- name added for post -->
-        </label>
-
-      
-		<?php for($y = 1; $y <= 4; $y++){ //open for loop to display answer space ?>
-        <label for="answer">
-         <input name = "checkbox<?php echo $i.$y;?>" value = "<?php echo $i.$y;?>" type="checkbox"><label for="checkbox1"><?php echo $y; ?></label>
-         <input type="text" name="answer<?php echo $i.$y;?>" placeholder="Answer<?php echo $y; ?>" />
-        </label>
-        <?php }
+		public function Question($q){
+			$this->question = $q;
+			$this->numCorrectAnswers = 0;
+		}
 		
-		//closes for loop to display answer spaces ?>
+		public function getCorrectAnswers(){
 
-        
-
-      <?php }
-	  session_start();
-		
-		
-		$_SESSION['exam'] = $exam;
-		$_SESSION['course'] = $course;
-		$_SESSION['questions'] = $questions;
-		$_SESSION['section'] = $section;
-		//closes for loop to display questions ?>
-
-        <input class="center button [tiny small large]" type="submit" value="Confirm" />
-      </form>
-  
-          
-        
-
-  </div>
-  <div class="small-6 large-3 columns"> 
-  This is the right part
-  </div>
-
-  
- </div> 
-
-
-<script>
-
-  alert("This is the assessment form, fill out the question and answer spaces and then select all correct answers");
-
-</script>
-
-
-<?php include('inc/footer.php'); ?>
+			return $this->correctAnswers;
+		}
+		public function addCorrectAnswer($ans){
+			$this->correctAnswers[$this->numCorrectAnswers] = $ans;
+			$this->numCorrectAnswers++;
+		}
+		public function getNumCorrect(){
+			return $this->numCorrectAnswers;
+		}
+		public function set_question($q){
+	
+			$this->question = $q;
+			
+		}
+		public function get_question(){
+			return $this->question;
+			
+		}
+		public function setAnswer1($a){
+			$this->answer1 = $a;
+		}
+		public function setAnswer2($a){
+			$this->answer2 = $a;
+		}
+		public function setAnswer3($a){
+			$this->answer3 = $a;
+		}
+		public function setAnswer4($a){
+			$this->answer4 = $a;
+		}
+		public function getAnswer1(){
+			return $this->answer1;
+		}
+		public function getAnswer2(){
+			return $this->answer2;
+		}
+		public function getAnswer3(){
+			return $this->answer3;
+		}
+		public function getAnswer4(){
+			return $this->answer4;
+		}
+		public function displayQuestion(){
+			echo $this->question;
+			echo "<br>";
+			echo $this->answer1;
+			echo "<br>";
+			echo $this->answer2;
+			echo "<br>";
+			echo $this->answer3;
+			echo "<br>";
+			echo $this->answer4;
+			echo "<br>";
+			echo "The number of correct answers for this question is: " . $this->numCorrectAnswers;
+			echo "<br>";
+			for($i = 0; $i<$this->numCorrectAnswers; $i++){
+				 echo $this->correctAnswers[$i] . " is a correct answer";
+				 echo "<br>";
+				
+			}	
+		}
+}
+?>

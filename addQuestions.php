@@ -59,7 +59,7 @@ a question form the number of forms depends on how many questions the professor 
       <!-- This space is the empty question form -->
       <form action="confirmAssessment.php" name="#" method="POST">
         <label>
-         <input type="text" name="question<?php echo $i;?>" placeholder="Question: <?php echo $i + 1; ?> " /><!-- name added for post -->
+         <input type="text" name="question<?php echo $i;?>" placeholder="Question: <?php echo $i; ?> " /><!-- name added for post -->
         </label>
 
       

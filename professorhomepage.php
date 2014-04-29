@@ -27,7 +27,7 @@
   	 <h3>Welcome Professor, </h3><br><br>
   	 <label><h4>Edit or Create:</h4>
 
-     <form method="POST" action="professorCreateAssessment.php" >
+     <form method="POST" action="professorhomepage.php" >
           <select name="createOrModify">
             <option value="create">Create Assessment</option>
             <option value="modify">Modify Existing Assessment</option>
@@ -46,6 +46,8 @@
   </div>
   
   <?php
+  if(isset($_POST['createOrModify']))
+  {
 $name = $_POST['createOrModify'];
 if ($name == "create")
 {
@@ -54,6 +56,7 @@ if ($name == "create")
 if($name == "modify")
 {
 	header('Location: modifyAssessment.php');
+}
 }
 ?>
 
