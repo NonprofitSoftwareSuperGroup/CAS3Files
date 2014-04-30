@@ -29,16 +29,28 @@
 			$questions[$i] = $_POST['question' . $i];//assign the question to the question array
 			//echo $questions[$i];
 			$questionObj[$i]= new Question($questions[$i]);
-			for($y = 1; $y <= 4; $y++){
+			for($y = 1; $y <= 5; $y++){
 				$answers[$i][$y] = $_POST['answer' . $i.$y];//get answers from form and add them to question object
-				if($y==1)
+				if($y==1){
 					$questionObj[$i]->setAnswer1($answers[$i][$y]);
-				if($y==2)
+					$questionObj[$i]->incrementNumAnswers();
+				}
+				if($y==2){
 					$questionObj[$i]->setAnswer2($answers[$i][$y]);
-				if($y==3)
+					$questionObj[$i]->incrementNumAnswers();
+				}
+				if($y==3){
 					$questionObj[$i]->setAnswer3($answers[$i][$y]);
-				if($y==4)
+					$questionObj[$i]->incrementNumAnswers();
+				}
+				if($y==4){
 					$questionObj[$i]->setAnswer4($answers[$i][$y]);
+					$questionObj[$i]->incrementNumAnswers();
+				}
+				if($y==5){
+					$questionObj[$i]->setAnswer5($answers[$i][$y]);
+					$questionObj[$i]->incrementNumAnswers();
+				}
 
 				if(isset($_POST['checkbox' . $i.$y]))//if checkbox is clicked
 					$correctAnswers[$i][$y] = $_POST['checkbox' . $i.$y];//save the value(this will correspond to the answer number, so the end result is that each question object has the answer numbers that are correct)
