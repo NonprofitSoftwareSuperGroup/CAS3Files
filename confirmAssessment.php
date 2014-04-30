@@ -12,7 +12,6 @@
 	<?php
 		include('class/questionClass.php');
 		
-		session_start();
 		
 		$course = $_SESSION['course'];
 		$exam = $_SESSION['exam'];
