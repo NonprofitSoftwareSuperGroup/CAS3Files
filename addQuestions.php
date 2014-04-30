@@ -63,10 +63,10 @@ a question form the number of forms depends on how many questions the professor 
         </label>
  
        
-        <?php for($y = 1; $y <= 4; $y++){ //open for loop to display answer space ?>
+        <?php for($y = 1; $y <= 5; $y++){ //open for loop to display answer space ?>
         <label for="answer">
          <input name = "checkbox<?php echo $i.$y;?>" value = "<?php echo $i.$y;?>" type="checkbox"><label for="checkbox1"><?php echo $y; ?></label>
-         <input type="text" name="answer<?php echo $i.$y;?>" placeholder="Answer<?php echo $y; ?>" />
+         <input type="text" name="answer<?php echo $i.$y;?>" placeholder="Answer<?php echo $y-1; ?>" />
         </label>
         <?php }
          
