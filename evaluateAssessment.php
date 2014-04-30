@@ -6,7 +6,15 @@
   $query2 = "SELECT Answers FROM answer_keys WHERE Course='".$course."' AND Section='".$section."' LIMIT 1";
   $result2 = mysql_query($query2) or die(mysql_error());
 
-  $key = mysql_fetch_array($result2);
+  $x = 0;
+  while ($fetched = mysql_fetch_array($result2))
+    {
+      $keyarray = unserialize($fetched['Serials']);
+      while ($x < count($keyarray))
+      {
+        $key[$x] = $keyarray[$x];  
+      }
+    }
 
   // loop through key and answers, and compare to find "grade"
   $x = 0;
@@ -21,3 +29,4 @@
 
   //place "grade" in another DB for analysis
   mysql_query("INSERT INTO graded_assessments (Grade), VALUES ($grade)");
+?>

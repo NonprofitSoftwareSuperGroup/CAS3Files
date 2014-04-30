@@ -1,6 +1,6 @@
 <!-- surveyassessment.php -->
 
-<? php include('inc/header.php'); ?>
+<?php include('inc/header.php'); ?>
 <!--
 <div class="row">
 
@@ -9,7 +9,8 @@
   <div class="small-6 large-8 columns">
   <h1> PAGE CONTENT GOES IN HERE! </h1>
   <?php 
-		echo $_SESSION['courseName']; //split the course name to get section?>
+		echo $_SESSION['courseName']; //split the course name to get section
+  ?>
 
   	<p> Use this page to create new pages, it was created using foundation 5 CSS framework 
   	so if you should definitely look into that </p>
@@ -38,7 +39,7 @@
 <!-- the assessment -->
 
 <!--<form method="POST" action="submitSA.php">-->
-	<? php
+	<?php 
 	/*
 		$length = (count($numberQuestions))  x 4; //each question will have 4 answers
 
@@ -52,9 +53,9 @@
 				}
 			echo "</select>"
 		}
-
+	*/
 	?>
-<!-- the survey -->
+<!-- the survey 
 </form>
 	
 	</div>
@@ -62,5 +63,5 @@
  	<div class="small-12 large-2 columns"> Right part of the grid</div>
 	</div>
 
-*/
+-->
 <?php include('inc/footer.php'); ?>
