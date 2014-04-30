@@ -82,7 +82,6 @@ CREATE TABLE IF NOT EXISTS `students` (
   `index` double NOT NULL AUTO_INCREMENT,
   `email` varchar(30) NOT NULL,
   `otk` varchar(30) NOT NULL,
-  `used` varchar(5) NOT NULL,
   `course` text NOT NULL,
   `Section` int(10) NOT NULL,
   PRIMARY KEY (`index`)
@@ -92,14 +91,14 @@ CREATE TABLE IF NOT EXISTS `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`index`, `email`, `otk`, `used`, `course`, `Section`) VALUES
-(15, 'mike@aol.com', '9175', 'NO', 'CMPT-280!1', 0),
-(16, 'matt@aol.com', '7315', 'NO', 'CMPT-281!2', 0),
-(17, 'joe@aol.com', '3281', 'NO', 'CMPT-280!1', 0),
-(18, 'peter@aol.com', '3816', 'NO', 'CMPT-371!1', 0),
-(19, 'sam@aol.com', '5640', 'NO', 'CMPT-372!1', 0),
-(20, 'iridebmxnj@aol.com', '1395', 'NO', '', 0),
-(21, '44@fuckmail.IhateMSU.com', '5506', 'NO', '', 0);
+INSERT INTO `students` (`index`, `email`, `otk`, `course`, `Section`) VALUES
+(15, 'mike@aol.com', '9175', 'CMPT-280', 2),
+(16, 'matt@aol.com', '7315', 'CMPT-281', 4),
+(17, 'joe@aol.com', '3281', 'CMPT-280', 2),
+(18, 'peter@aol.com', '3816', 'CMPT-371', 2),
+(19, 'sam@aol.com', '5640', 'CMPT-372', 1),
+(20, 'iridebmxnj@aol.com', '1395', '', 0),
+(21, '44@fuckmail.IhateMSU.com', '5506', '', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
