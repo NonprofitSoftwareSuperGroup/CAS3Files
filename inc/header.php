@@ -8,7 +8,7 @@
     <script src="js/vendor/modernizr.js"></script>
   </head>
   <body>
-
+<?php  session_start(); ?>
   <nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name">
@@ -17,7 +17,6 @@
     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
 
- 
   <section class="top-bar-section">
 
     <ul class="right">
@@ -26,5 +25,6 @@
   </section>
 </nav>
   
-
 </body>
+
+ 

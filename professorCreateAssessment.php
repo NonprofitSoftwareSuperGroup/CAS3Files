@@ -15,18 +15,7 @@ section: course section
 
   <div class="small-6 large-3 columns"> Left part of the grid</div>
 
-    
 
-  
-  <?php
-
-  $createOrMod = $_POST['createOrModify'];  
-  $value = (string)$createOrMod;
-
-  if($value == "create")
-  {
-
-  ?>
   <form method="POST" action="addQuestions.php" >
     <div class = "small-3 large-6 columns">
          <h3>Create Assessment</h3><br><br>
@@ -76,18 +65,6 @@ section: course section
          
           
       </div>
-
-
-  <?php
-  } else {
-  if($value == "modify")
-   {
-    header('Location: modifyAssessment.php');
-   }
-  }
-  ?>
-  
-
 
 
 

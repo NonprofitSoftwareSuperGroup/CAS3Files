@@ -12,7 +12,7 @@
  include('class/loginModule.php');
  ?>
 				<div class="row">
-						<?php session_start();
+						<?php 
 					  echo '<div class="small-7 small-centered columns"> <h4>  Is ' . $_SESSION['courseName'] .'-'. $_SESSION['section'] .' the correct class? If so click continue. </h4> </div>';
 						?>
 					<div class="small-7 small-centered columns">
