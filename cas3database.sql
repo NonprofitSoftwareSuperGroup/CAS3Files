@@ -103,3 +103,30 @@ INSERT INTO `students` (`index`, `email`, `otk`, `course`, `Section`) VALUES
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `graded_assessments`
+--
+
+CREATE TABLE IF NOT EXISTS `graded_assessments` (
+  `Course` text NOT NULL,
+  `Section` int(11) NOT NULL,
+  `Grade` int(11) NOT NULL,
+  `index` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `graded_assessments`
+--
+
+INSERT INTO `graded_assessments` (`Course`, `Section`, `Grade`, `index`) VALUES
+('CMPT 280', 1, 90, 0),
+('CMPT 280', 1, 80, 1),
+('CMPT 280', 1, 99, 2),
+('CMPT 280', 1, 76, 3);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
