@@ -11,11 +11,8 @@ if(isset($_POST['username']) && isset($_POST['password']))
         $query = "SELECT * FROM professor WHERE username='".$username."' AND password='".$password."' LIMIT 1";
         $result = mysql_query($query) or die(mysql_error());
 
-        if(mysql_num_rows($result) == 1)
-		{
-			
-		  //$_SESSION['user']=$username;//used in modify and confirmAssessment      if using professors can only edit questions they created
-		  
+        if(mysql_num_rows($result) == 1){
+
           echo "Thanks for logging in";
 
           print "<script>";
