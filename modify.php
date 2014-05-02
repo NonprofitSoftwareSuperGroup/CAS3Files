@@ -121,11 +121,11 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		$checkAnswer3 = isset($_POST['answer3'.$i2.'']) && !$_POST['answer3'.$i2.'']=='';
 		$checkAnswer4 = isset($_POST['answer4'.$i2.'']) && !$_POST['answer4'.$i2.'']=='';
 		$checkAnswer5 = isset($_POST['answer5'.$i2.'']) && !$_POST['answer5'.$i2.'']=='';
-		$checkCheckBox1 = isset($_POST['checkbox1'.$i2.'']) && !$_POST['checkbox1'.$i2.'']==null;//mabey null? also check database to see if copied
-		$checkCheckBox2 = isset($_POST['checkbox2'.$i2.'']) && !$_POST['checkbox2'.$i2.'']==null;
-		$checkCheckBox3 = isset($_POST['checkbox3'.$i2.'']) && !$_POST['checkbox3'.$i2.'']==null;
-		$checkCheckBox4 = isset($_POST['checkbox4'.$i2.'']) && !$_POST['checkbox4'.$i2.'']==null;
-		$checkCheckBox5 = isset($_POST['checkbox5'.$i2.'']) && !$_POST['checkbox5'.$i2.'']==null;
+		$checkCheckBox1 = isset($_POST['checkbox1'.$i2.'']);
+		$checkCheckBox2 = isset($_POST['checkbox2'.$i2.'']);
+		$checkCheckBox3 = isset($_POST['checkbox3'.$i2.'']);
+		$checkCheckBox4 = isset($_POST['checkbox4'.$i2.'']);
+		$checkCheckBox5 = isset($_POST['checkbox5'.$i2.'']);
 		//print_r($checkQuestion);
 		
 		
@@ -226,12 +226,12 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		if($checkCheckBox1)
 		{
 		
-			echo $_POST['checkbox1'.$i2.''];
+			//echo $_POST['checkbox1'.$i2.''];
 		
 			//echo "the";
 			//echo $questions[$i2]->getNumCorrect();
 			
-			$questions[$i2]->removeCorrectAnswers();
+			//$questions[$i2]->removeCorrectAnswers();
 			
 			$box = $questions[$i2]->getQuestionNum().".".$_POST['checkbox1'.$i2.''];
 			//echo $box;
