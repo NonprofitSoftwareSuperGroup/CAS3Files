@@ -54,12 +54,6 @@
       <p>To report bugs please email admin@CAS3.com</p>
     </div>
   </dd>
-  <dd>
-    <a href="#panel4">Report Issues</a>
-    <div id="panel4" class="content">
-      <p>To report bugs please email admin@CAS3.com</p>
-    </div>
-  </dd>
 </dl>
 
 
