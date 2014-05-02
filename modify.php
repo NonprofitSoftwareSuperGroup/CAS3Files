@@ -41,11 +41,25 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 	$query = "SELECT question FROM question WHERE course='".$_SESSION['course']."' AND section='".$_SESSION['section']."'";
 	$result = mysql_query($query) or die(mysql_error());
 	
+	
+	if(mysql_num_rows($result)==0)		//sends the professor back if no questions are there to be modified
+	{
+		echo '
+			<script>
+			 
+			  alert("No questions to be modified in this course and section");
+			  window.location = "professorhomepage.php";
+			</script>'
+			;
+	}
+	
+	
 	$i=1;
 	while ($row = mysql_fetch_assoc($result)) 
 	{
 		//echo $row["question"];
 		$questions[$i]=unserialize($row["question"]);
+		
 		//echo $questions->getProf();
 		//echo '</br>';
 		//echo $_SESSION['user'];
@@ -63,7 +77,6 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		 <label> Answer 1: </label>
 		 <input name = "checkbox1'.$i.'" value="1" type="checkbox" />
 		 <input type="text" name="answer1'.$i.'" placeholder="New Answer 1" />
-
 		
 		 <label> Answer 2: </label>
 		 <input name = "checkbox2'.$i.'" value="2" type="checkbox">
@@ -92,6 +105,10 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		$questions[$i]->displayQuestion();
 		$i++;
 		}*/
+		
+
+		
+		
 	}
 	
 	//echo $i;
@@ -105,7 +122,6 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		</div>
 		</div>
 		';
-		
 		
 	//echo	$_POST['checkbox1'.'1'.''];
 		
