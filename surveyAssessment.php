@@ -1,67 +1,81 @@
-<!-- surveyassessment.php -->
-
 <?php include('inc/header.php'); ?>
-<!--
-<div class="row">
+<?php include('inc/dbSetup.php'); ?>
+<?php include('class/questionClass.php');?>
 
+	<!--  This is a sample question page. -->
+<!--  Please check out Foundation 5 framework if you plan on changing any of the visuals -->
+
+<div class="row">
  <div class="small-6 large-2 columns"> Left part of the grid</div>
 
   <div class="small-6 large-8 columns">
   <h1> PAGE CONTENT GOES IN HERE! </h1>
   <?php 
-		echo $_SESSION['courseName']; //split the course name to get section
+  $email = $_SESSION['email'];  //use to set used to delete row
+  $course = $_SESSION['courseName'];
+  $section = $_SESSION['section'];
+
+  $query = "SELECT * FROM question";//database query
+  $result = mysql_query($query) or die(mysql_error());
+  $counter = 0;
+  $serializedQuestions = array();
+  $questionObjects = array();
+
+  while($row = mysql_fetch_array($result)) {//interpret rows
+      $serializedQuestions[$counter] = $row['question'];//put serialized questions into the array
+      //echo $row['index'] . " " . $row['question'] . " " . $row['course'] . " " . $row['section'];
+      //echo "<br>";
+      $counter++;
+  }
   ?>
+  <form action ="studentFarewell.php" method = "POST"><?php
+  for($i=0; $i<count($serializedQuestions);$i++){
+    $questionObjects[$i]= unserialize($serializedQuestions[$i]);
+    echo "<br>";
+    echo $i+1 . ".) " . $questionObjects[$i]->get_question();
+    echo "<br>";
+    for($y=0; $y<$questionObjects[$i]->getNumAnswers(); $y++){
+      if($y==0){
+        echo "A.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>1"> <?php echo $questionObjects[$i]->getAnswer1();
+        echo "<br>";
+      }
 
-  	<p> Use this page to create new pages, it was created using foundation 5 CSS framework 
-  	so if you should definitely look into that </p>
+      if($y==1){  
+        echo "B.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>2"> <?php echo $questionObjects[$i]->getAnswer2();
+        echo "<br>";
+      }
 
+      if($y==2){  
+        echo "C.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>3"> <?php echo $questionObjects[$i]->getAnswer3();        
+        echo "<br>";
+      }
+
+      if($y==3){  
+        echo "D.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>4"> <?php echo $questionObjects[$i]->getAnswer4();
+        echo "<br>";
+      }
+
+      if($y==4){  
+        echo "E.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>5"> <?php echo $questionObjects[$i]->getAnswer5();        
+        echo "<br>";
+      }
+      
+    }
+  }
+  ?>
+  <input class="center button [tiny small large]" type="submit" value = "Submit!">
+  </form>
+  <?php
+  mysql_close($con);
+  //$query3 = "DELETE FROM students WHERE email='".$email."' AND section='".$section."' AND course='".$course."' LIMIT 1";
+  //$result3 = mysql_query($query3) or die(mysql_error());
+  ?>
+  	
 
   </div>
 
  <div class="small-12 large-2 columns"> Right part of the grid</div>
-</div>-->
-<a href="studentFarewell.php">Click this</a>
-<!--
-<?php include('inc/footer.php'); ?>
+</div>
 
-	<div class="small-6 large-2 columns"><a href="help.php">HELP</a></div>
 
-	<div class="small-6 large-8 columns">
-		<?php 
-			//session_start();
-			//echo $_SESSION['courseName'] . '-' . $_SESSION['section'];	
-		?>
-
-		<p>
-			Please complete <b>all</b> questions before continuing. Click <b>'Complete'</b> when you have finished.
-		</p>
--->
-<!-- the assessment -->
-
-<!--<form method="POST" action="submitSA.php">-->
-	<?php 
-	/*
-		$length = (count($numberQuestions))  x 4; //each question will have 4 answers
-
-		for($i=0; $i < $numberQuestions; $i++) 
-		{
-			echo "<select name="Question .$i.">"
-				for ($x=0; $x < $length; x++)
-				{
-					echo "<input type="radio" name="ans" value=". $array[$x] .">". $array[$x] . "<br>";
-				 
-				}
-			echo "</select>"
-		}
-	*/
-	?>
-<!-- the survey 
-</form>
-	
-	</div>
-
- 	<div class="small-12 large-2 columns"> Right part of the grid</div>
-	</div>
-
--->
 <?php include('inc/footer.php'); ?>
