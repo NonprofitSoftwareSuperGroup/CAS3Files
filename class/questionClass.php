@@ -10,13 +10,32 @@ class Question {
 		var $correctAnswers = array();
 		var $numCorrectAnswers;
 		var $numAnswers;
-		var $professorName;
+		//var $professorName;			if using professors can only edit questions they created
+		var $questionNum;
+
 		
+
 		public function Question($q){
 			$this->question = $q;
 			$this->numCorrectAnswers = 0;
 			$this->numAnswers=0;
 		}
+		
+		public function getNumAnswers()
+		{
+			return $this->numAnswers;
+		}
+		public function setAnswer5($a){
+			$this->answer5 = $a;
+		}
+		public function getAnswer5(){
+			return $this->answer5;
+		}
+		
+
+		public function incrementNumAnswers(){
+			$this->numAnswers++;
+		}		
 		
 		public function getCorrectAnswers(){
 
@@ -26,9 +45,33 @@ class Question {
 			$this->correctAnswers[$this->numCorrectAnswers] = $ans;
 			$this->numCorrectAnswers++;
 		}
+		
+		public function removeCorrectAnswers()
+		{
+			$this->numCorrectAnswers=0;
+			$this->correctAnswers = array();
+			//$this->correctAnswers = array();
+			//$this->correctAnswers[2] = null;
+			//$this->correctAnswers[3] = null;
+			
+			//$this->numCorrectAnswers++;
+			
+		}
+		
 		public function getNumCorrect(){
 			return $this->numCorrectAnswers;
 		}
+		
+		public function setQuestionNum($a)
+		{
+			$this->questionNum = $a;
+		}
+		
+		public function getQuestionNum()
+		{
+			return $this->questionNum;
+		}
+		
 		public function set_question($q){
 	
 			$this->question = $q;
@@ -37,13 +80,6 @@ class Question {
 		public function get_question(){
 			return $this->question;
 			
-		}
-		public function getNumAnswers()
-		{
-			return $this->numAnswers;
-		}
-		public function incrementNumAnswers(){
-			$this->numAnswers++;
 		}
 		public function setAnswer1($a){
 			$this->answer1 = $a;
@@ -57,10 +93,6 @@ class Question {
 		public function setAnswer4($a){
 			$this->answer4 = $a;
 		}
-		public function setAnswer5($a){
-			$this->answer5 = $a;
-		}
-
 		public function getAnswer1(){
 			return $this->answer1;
 		}
@@ -73,9 +105,16 @@ class Question {
 		public function getAnswer4(){
 			return $this->answer4;
 		}
-		public function getAnswer5(){
-			return $this->answer5;
+		/*public function setProf($a)     if using professors can only edit questions they created 
+		{
+			$this->professorName = $a;
 		}
+		public function getProf()
+		{
+			return $this->professorName;
+		}*/
+		
+		
 		
 		public function displayQuestion(){
 			echo $this->question;
@@ -90,6 +129,7 @@ class Question {
 			echo "<br>";
 			echo $this->answer5;
 			echo "<br>";
+
 			echo "The number of correct answers for this question is: " . $this->numCorrectAnswers;
 			echo "<br>";
 			for($i = 0; $i<$this->numCorrectAnswers; $i++){
