@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2014 at 06:27 AM
+-- Generation Time: May 03, 2014 at 05:21 PM
 -- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- PHP Version: 5.5.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -106,21 +106,24 @@ CREATE TABLE IF NOT EXISTS `question` (
   `question` varchar(10000) NOT NULL,
   `course` varchar(10) NOT NULL,
   `section` int(10) NOT NULL,
+  `exam` text NOT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`index`, `question`, `course`, `section`) VALUES
-(2, 'O:8:"Question":7:{s:7:"answer1";s:2:"a1";s:7:"answer2";s:2:"b1";s:7:"answer3";s:2:"c2";s:7:"answer4";s:2:"d3";s:8:"question";s:10:"Question 2";s:14:"correctAnswers";a:2:{i:0;s:3:"1.3";i:1;s:3:"1.4";}s:17:"numCorrectAnswers";i:2;}', 'CMPT-280', 3),
-(3, 'O:8:"Question":7:{s:7:"answer1";s:12:"who the fuck";s:7:"answer2";s:14:"where the fuck";s:7:"answer3";s:12:"why the fuck";s:7:"answer4";s:13:"fuck the fuck";s:8:"question";s:5:"Fuck?";s:14:"correctAnswers";a:4:{i:0;s:3:"1.1";i:1;s:3:"1.2";i:2;s:3:"1.3";i:3;s:3:"1.4";}s:17:"numCorrectAnswers";i:4;}', 'CMPT-371', 4),
-(4, 'O:8:"Question":7:{s:7:"answer1";s:7:"keanen ";s:7:"answer2";s:4:"kell";s:7:"answer3";s:4:"matt";s:7:"answer4";s:10:"some nigga";s:8:"question";s:22:"Who loves orange soda?";s:14:"correctAnswers";a:1:{i:0;s:3:"2.1";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-371', 4),
-(5, 'O:8:"Question":7:{s:7:"answer1";s:3:"gay";s:7:"answer2";s:5:"alien";s:7:"answer3";s:4:"fast";s:7:"answer4";s:6:"jewish";s:8:"question";s:10:"Benham is?";s:14:"correctAnswers";a:3:{i:0;s:3:"3.1";i:1;s:3:"3.2";i:2;s:3:"3.4";}s:17:"numCorrectAnswers";i:3;}', 'CMPT-371', 4),
-(6, 'O:8:"Question":7:{s:7:"answer1";s:29:"I said what what in the butt.";s:7:"answer2";s:9:"HA Gaaaay";s:7:"answer3";s:13:"Whisper girl?";s:7:"answer4";s:26:"Antoniou. George Antoniou.";s:8:"question";s:22:"What what in the butt?";s:14:"correctAnswers";a:1:{i:0;s:3:"1.1";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1),
-(7, 'O:8:"Question":7:{s:7:"answer1";s:4:"Cake";s:7:"answer2";s:5:"Drake";s:7:"answer3";s:7:"Drizzle";s:7:"answer4";s:5:"Dizzy";s:8:"question";s:6:"Drizzy";s:14:"correctAnswers";a:1:{i:0;s:3:"2.2";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1),
-(8, 'O:8:"Question":7:{s:7:"answer1";s:5:"Girls";s:7:"answer2";s:4:"Dogs";s:7:"answer3";s:3:"Boy";s:7:"answer4";s:16:"Go Fuck Yourself";s:8:"question";s:8:"Fall Out";s:14:"correctAnswers";a:1:{i:0;s:3:"3.3";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1);
+INSERT INTO `question` (`index`, `question`, `course`, `section`, `exam`) VALUES
+(2, 'O:8:"Question":7:{s:7:"answer1";s:2:"a1";s:7:"answer2";s:2:"b1";s:7:"answer3";s:2:"c2";s:7:"answer4";s:2:"d3";s:8:"question";s:10:"Question 2";s:14:"correctAnswers";a:2:{i:0;s:3:"1.3";i:1;s:3:"1.4";}s:17:"numCorrectAnswers";i:2;}', 'CMPT-280', 3, 'entry'),
+(3, 'O:8:"Question":7:{s:7:"answer1";s:12:"who the fuck";s:7:"answer2";s:14:"where the fuck";s:7:"answer3";s:12:"why the fuck";s:7:"answer4";s:13:"fuck the fuck";s:8:"question";s:5:"Fuck?";s:14:"correctAnswers";a:4:{i:0;s:3:"1.1";i:1;s:3:"1.2";i:2;s:3:"1.3";i:3;s:3:"1.4";}s:17:"numCorrectAnswers";i:4;}', 'CMPT-371', 4, 'entry'),
+(4, 'O:8:"Question":7:{s:7:"answer1";s:7:"keanen ";s:7:"answer2";s:4:"kell";s:7:"answer3";s:4:"matt";s:7:"answer4";s:10:"some nigga";s:8:"question";s:22:"Who loves orange soda?";s:14:"correctAnswers";a:1:{i:0;s:3:"2.1";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-371', 4, 'entry'),
+(5, 'O:8:"Question":7:{s:7:"answer1";s:3:"gay";s:7:"answer2";s:5:"alien";s:7:"answer3";s:4:"fast";s:7:"answer4";s:6:"jewish";s:8:"question";s:10:"Benham is?";s:14:"correctAnswers";a:3:{i:0;s:3:"3.1";i:1;s:3:"3.2";i:2;s:3:"3.4";}s:17:"numCorrectAnswers";i:3;}', 'CMPT-371', 4, 'exit'),
+(6, 'O:8:"Question":7:{s:7:"answer1";s:29:"I said what what in the butt.";s:7:"answer2";s:9:"HA Gaaaay";s:7:"answer3";s:13:"Whisper girl?";s:7:"answer4";s:26:"Antoniou. George Antoniou.";s:8:"question";s:22:"What what in the butt?";s:14:"correctAnswers";a:1:{i:0;s:3:"1.1";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1, 'entry'),
+(7, 'O:8:"Question":7:{s:7:"answer1";s:4:"Cake";s:7:"answer2";s:5:"Drake";s:7:"answer3";s:7:"Drizzle";s:7:"answer4";s:5:"Dizzy";s:8:"question";s:6:"Drizzy";s:14:"correctAnswers";a:1:{i:0;s:3:"2.2";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1, 'entry'),
+(8, 'O:8:"Question":7:{s:7:"answer1";s:5:"Girls";s:7:"answer2";s:4:"Dogs";s:7:"answer3";s:3:"Boy";s:7:"answer4";s:16:"Go Fuck Yourself";s:8:"question";s:8:"Fall Out";s:14:"correctAnswers";a:1:{i:0;s:3:"3.3";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1, 'exit'),
+(13, 'O:8:"Question":10:{s:7:"answer1";s:3:"ans";s:7:"answer2";s:7:"another";s:7:"answer3";s:11:"correct Ans";s:7:"answer4";s:13:"some Question";s:7:"answer5";s:7:"another";s:8:"question";s:10:"A Question";s:14:"correctAnswers";a:1:{i:0;s:3:"1.3";}s:17:"numCorrectAnswers";i:1;s:10:"numAnswers";i:5;s:11:"questionNum";i:1;}', 'CMPT-280', 3, 'exit'),
+(14, 'O:8:"Question":10:{s:7:"answer1";s:3:"one";s:7:"answer2";s:3:"two";s:7:"answer3";s:5:"three";s:7:"answer4";s:4:"four";s:7:"answer5";s:4:"five";s:8:"question";s:1:"Q";s:14:"correctAnswers";a:2:{i:0;s:3:"2.3";i:1;s:3:"2.5";}s:17:"numCorrectAnswers";i:2;s:10:"numAnswers";i:5;s:11:"questionNum";i:2;}', 'CMPT-280', 3, 'exit');
 
 -- --------------------------------------------------------
 
@@ -134,20 +137,20 @@ CREATE TABLE IF NOT EXISTS `students` (
   `otk` varchar(30) NOT NULL,
   `course` text NOT NULL,
   `Section` int(10) NOT NULL,
+  `exam` text NOT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`index`, `email`, `otk`, `course`, `Section`) VALUES
-(16, 'matt@aol.com', '7315', 'CMPT-281', 4),
-(17, 'joe@aol.com', '3281', 'CMPT-280', 1),
-(18, 'peter@aol.com', '3816', 'CMPT-371', 2),
-(19, 'sam@aol.com', '5640', 'CMPT-372', 1),
-(20, 'iridebmxnj@aol.com', '1395', '', 0),
-(21, '44@fuckmail.IhateMSU.com', '5506', '', 0);
+INSERT INTO `students` (`index`, `email`, `otk`, `course`, `Section`, `exam`) VALUES
+(16, 'matt@aol.com', '7315', 'CMPT-281', 4, 'entry'),
+(17, 'joe@aol.com', '3281', 'CMPT-280', 1, 'exit'),
+(18, 'peter@aol.com', '3816', 'CMPT-371', 2, 'entry'),
+(19, 'sam@aol.com', '5640', 'CMPT-372', 1, 'entry'),
+(24, 'kellerp2@mail.montclair.edu', '8448', 'CMPT-280', 3, 'exit');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -72,7 +72,7 @@
 			}
 			$serializedQuestions[$i] = serialize($questionObj[$i]);
 
-			$query = "INSERT INTO question (question, course, section) VALUES ('$serializedQuestions[$i]','$course','$section')";
+			$query = "INSERT INTO question (question, course, section, exam) VALUES ('$serializedQuestions[$i]','$course','$section','$exam')";//exam added
 			$result = mysql_query($query) or die(mysql_error());
 
 			$test = unserialize($serializedQuestions[$i]);
