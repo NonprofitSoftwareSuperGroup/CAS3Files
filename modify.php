@@ -151,7 +151,7 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 
 	$i2=1;
 	$check=false;
-\
+
 	while($i2<$i)
 	{
 		$checkQuestion = isset($_POST['question'.$i2.'']) && !$_POST['question'.$i2.'']=='';
