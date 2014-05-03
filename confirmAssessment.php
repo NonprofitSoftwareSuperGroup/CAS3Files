@@ -17,7 +17,8 @@
 		$exam = $_SESSION['exam'];
 		$section = $_SESSION['section'];
 		$numQuestions = $_SESSION['questions'];
-		echo "<h3> Professor, please confirm that the information for the " . $exam . " exam of " . $course . "-" . $section . " is all correct<br><br></h3>";
+		$prof = $_SESSION['user'];
+		echo "<h3> ".$prof.", please confirm that the information for the " . $exam . " exam of " . $course . "-" . $section . " is all correct<br><br></h3>";
 		$questions = array();//array containing the question strings from addQuestions.php
 		$answers = array();//array containing the answer strings from addQuestions.php
 		$questionObj = array();//array containing question Objects 
@@ -56,6 +57,8 @@
 					$whichAnswersCorrect[$i][$y] = $_POST['checkbox' . $i.$y];//save the value(this will correspond to the answer number, so the end result is that each question object has the answer numbers that are correct)
 					$x = $i . "." . $y;
 					$questionObj[$i]->addCorrectAnswer($x);	
+					$questionObj[$i]->setQuestionNum($i);
+
 				}
 				if(isset($_POST['checkbox' . $i.$y])){
 					$correctAnswers[$i][$y] =1;	
@@ -66,7 +69,7 @@
 			}
 			$serializedQuestions[$i] = serialize($questionObj[$i]);
 
-			$query = "INSERT INTO question (question, course, section) VALUES ('$serializedQuestions[$i]','$course','$section')";
+			$query = "INSERT INTO question (question, course, section, exam, prof) VALUES ('$serializedQuestions[$i]','$course','$section','$exam','$prof')";
 			$result = mysql_query($query) or die(mysql_error());
 
 			$test = unserialize($serializedQuestions[$i]);
@@ -91,7 +94,7 @@
 			*/
 		}
 			$serializedAnswerKey = serialize($correctAnswers);
-			$query = "INSERT INTO answerkeys (answerKeyArray, course, section) VALUES ('$serializedAnswerKey', '$course', '$section')";
+			$query = "INSERT INTO answerkeys (answerKeyArray, course, section, exam) VALUES ('$serializedAnswerKey', '$course', '$section', '$exam')";
 						$result = mysql_query($query) or die(mysql_error());
 
 	?>

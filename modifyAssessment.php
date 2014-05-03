@@ -30,6 +30,15 @@
             <option value="4">4</option>
           </select>
         </label>
+		
+		        <label>Entry or Exit Exam: 
+          <!--  use for loop to display more -->
+          <select name="examSelect"> <!-- Added name -->
+            <option value="entry">ENTRY</option>
+            <option value="exit">EXIT</option>
+          </select>
+
+        </label>
 
 	<div class="small-6 small-centered columns">
           <input class="center button [tiny small large]" type="submit" value="Modify" />

@@ -19,18 +19,43 @@ echo '
 }
 */
 
-if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_SESSION['course']) && isset($_SESSION['section'])))
-{
 
-	if(isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))
+
+if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_POST['examSelect']) && isset($_SESSION['user']))||(isset($_SESSION['course']) && isset($_SESSION['section']) && isset($_SESSION['exam'])))// && isset($_SESSION['user'])
+{
+//echo $_POST['examSelect'];
+	if(isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_POST['examSelect']))
 	{
-	$course = $_POST['courseSelect'];
-	$section = $_POST['sectionSelect'];
+
+		$course = $_POST['courseSelect'];
+		$section = $_POST['sectionSelect'];
+		$exam = $_POST['examSelect'];
+		//echo $exam;
+		
+		$_SESSION['course']=$course;
+		$_SESSION['section']=$section;
+		$_SESSION['exam']=$exam;
+		
+	}
+	/*
+			$result4 = mysql_query("SELECT answerkeyarray FROM answerkeys WHERE course='".$_SESSION['course']."' AND section='".$_SESSION['section']."' AND exam ='".$_SESSION['exam']."'") or die(mysql_error());
+		$olderKey = mysql_fetch_assoc($result4);
+		$older=$olderKey["answerkeyarray"];
+		echo $older;*/
 	
-	$_SESSION['course']=$course;
-	$_SESSION['section']=$section;
+	function query2($edit, $older)//make the code more readable
+	{
+		return "UPDATE question SET question='".$edit."' WHERE course='".$_SESSION['course']."' AND question='".$older."' AND section='".$_SESSION['section']."' AND exam ='".$_SESSION['exam']."'";//AND prof='".$_SESSION['user']."'
 	}
 	
+	function query3($answerKeys)
+	{
+		$result5 = mysql_query("DELETE FROM answerkeys WHERE course='".$_SESSION['course']."' AND section='".$_SESSION['section']."' AND exam ='".$_SESSION['exam']."'") or die(mysql_error());
+		$course = $_SESSION['course'];
+		$section = $_SESSION['section'];
+		$exam = $_SESSION['exam'];
+		return "INSERT INTO answerkeys (answerkeyarray, course, section, exam) VALUES ('$answerKeys', '$course', '$section', '$exam')";
+	}
 	
 	echo '
 		 <form action="modify.php" name="questionsandAnswers" method="POST">
@@ -38,7 +63,7 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		 ';
 	
 
-	$query = "SELECT question FROM question WHERE course='".$_SESSION['course']."' AND section='".$_SESSION['section']."'";
+	$query = "SELECT question FROM question WHERE course='".$_SESSION['course']."' AND section='".$_SESSION['section']."' AND exam ='".$_SESSION['exam']."'";//AND prof='".$_SESSION['user']."'
 	$result = mysql_query($query) or die(mysql_error());
 	
 	
@@ -68,6 +93,9 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		//if($questions[$i]->getProf()==$_SESSION['user'])     if using professors can only edit questions they created
 		//{
 		$questions[$i]->displayQuestion();
+		
+		//var_dump($questions[$i]->getQuestionNum());
+		
 		$old[$i]= serialize($questions[$i]);
 		echo '	
 			
@@ -129,7 +157,8 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 	$i2=1;
 	$check=false;
 	//$first=true;
-	while($i2<=$i)
+
+	while($i2<$i)
 	{
 		$checkQuestion = isset($_POST['question'.$i2.'']) && !$_POST['question'.$i2.'']=='';
 		$checkAnswer1 = isset($_POST['answer1'.$i2.'']) && !$_POST['answer1'.$i2.'']=='';
@@ -144,7 +173,6 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		$checkCheckBox5 = isset($_POST['checkbox5'.$i2.'']);
 		//print_r($checkQuestion);
 		
-		
 		if($checkQuestion)
 		{
 			$questions[$i2]->set_question($_POST['question'.$i2.'']);
@@ -157,8 +185,7 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 			
 			//echo $old[$i2];
 			
-			$query2 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result2 = mysql_query($query2) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
 			
 			$check=true;
 			
@@ -169,8 +196,9 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		{
 			$questions[$i2]->setAnswer1($_POST['answer1'.$i2.'']);
 			//echo "works A1";
-			$query3 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result3 = mysql_query($query3) or die(mysql_error());
+			$result2 = mysql_query($query2) or die(mysql_error());
+			
+			//var_dump($questions[$i2]->getQuestionNum());
 			
 			$check=true;
 			
@@ -181,8 +209,7 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		{
 			$questions[$i2]->setAnswer2($_POST['answer2'.$i2.'']);
 			//echo "works A2";
-			$query4 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result4 = mysql_query($query4) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
 			
 			$check=true;
 			
@@ -193,8 +220,7 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		{
 			$questions[$i2]->setAnswer3($_POST['answer3'.$i2.'']);
 			//echo "works A3";
-			$query5 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result5 = mysql_query($query5) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
 			
 			$check=true;
 			
@@ -205,8 +231,7 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		{
 			$questions[$i2]->setAnswer4($_POST['answer4'.$i2.'']);
 			//echo "works A4";
-			$query6 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result6 = mysql_query($query6) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
 			
 			$check=true;
 			
@@ -218,8 +243,7 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		{
 			$questions[$i2]->setAnswer5($_POST['answer5'.$i2.'']);
 			//echo "works A5";
-			$query7 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result7 = mysql_query($query7) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
 			
 			$check=true;
 			
@@ -237,6 +261,11 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		//echo serialize($questions[$i2]);
 		//echo "hi";
 			$questions[$i2]->removeCorrectAnswers();
+		
+			for($i3=1; $i3<6; $i3++)
+			{
+				$correctAnswers[$i2][$i3]=0;
+			}
 		}
 		
 		if($checkCheckBox1)
@@ -248,6 +277,8 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 			//echo $questions[$i2]->getNumCorrect();
 			
 			//$questions[$i2]->removeCorrectAnswers();
+			
+			//var_dump($questions[$i2]->getQuestionNum());
 			
 			$box = $questions[$i2]->getQuestionNum().".".$_POST['checkbox1'.$i2.''];
 			//echo $box;
@@ -262,8 +293,14 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 			//echo "<br>";
 			//echo $old[$i2];
 			
-			$query8 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result8 = mysql_query($query8) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
+
+							
+			$correctAnswers[$i2][1] =1;
+			//var_dump(serialize($correctAnswers));
+			$result3 = mysql_query(query3(serialize($correctAnswers))) or die(mysql_error());
+			//var_dump($result3);
+			
 			
 			//var_dump($result8);
 			
@@ -296,10 +333,13 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 			//echo $box;
 			$questions[$i2]->addCorrectAnswer($box);
 			//echo "works A5";
-			$query9 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result9 = mysql_query($query9) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
+			
+			$correctAnswers[$i2][2] =1;	
+			$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error())); 
 			
 			$check=true;
+			
 			
 			$old[$i2]=serialize($questions[$i2]);			
 		}
@@ -310,8 +350,10 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 			//echo $box;
 			$questions[$i2]->addCorrectAnswer($box);
 			//echo "works A5";
-			$query10 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result10 = mysql_query($query10) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
+
+			$correctAnswers[$i2][3] =1;	
+			$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error())); 
 			
 			$check=true;
 			
@@ -324,8 +366,11 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 			//echo $box;
 			$questions[$i2]->addCorrectAnswer($box);
 			//echo "works A5";
-			$query11 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result11 = mysql_query($query11) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
+
+			$correctAnswers[$i2][4] =1;	
+			$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error())); 
+			
 			
 			$check=true;
 			
@@ -338,8 +383,14 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 			//echo $box;
 			$questions[$i2]->addCorrectAnswer($box);
 			//echo "works A5";
-			$query12 = "UPDATE question SET question='".serialize($questions[$i2])."' WHERE course='".$_SESSION['course']."' AND question='".$old[$i2]."' AND section='".$_SESSION['section']."'";
-			$result12 = mysql_query($query12) or die(mysql_error());
+			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
+
+			$correctAnswers[$i2][5] =1;	
+			var_dump(query3(serialize($correctAnswers)));
+			$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error()));
+			echo mysql_error();
+			var_dump($result3);
+
 			
 			$check=true;
 			
@@ -349,7 +400,7 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']))||(isset($_S
 		
 		if($check==true)
 		{
-			echo '<meta http-equiv="refresh" content="0">';//refresh page
+		//	echo '<meta http-equiv="refresh" content="0">';//refresh page
 		//	$_SESSION['start']=false;
 		}
 		

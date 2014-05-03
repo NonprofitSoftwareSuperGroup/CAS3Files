@@ -14,7 +14,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
         if(mysql_num_rows($result) == 1)
 		{
 			
-		  //$_SESSION['user']=$username;//used in modify and confirmAssessment      if using professors can only edit questions they created
+		  $_SESSION['user']=$username;      //if using professors can only edit questions they created
 		  
           echo "Thanks for logging in";
 
