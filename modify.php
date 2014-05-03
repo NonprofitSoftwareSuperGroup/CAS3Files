@@ -51,10 +51,15 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 	function query3($answerKeys)
 	{
 		$result5 = mysql_query("DELETE FROM answerkeys WHERE course='".$_SESSION['course']."' AND section='".$_SESSION['section']."' AND exam ='".$_SESSION['exam']."'") or die(mysql_error());
+	
+	    //echo mysql_error();
+		//var_dump($result5);
 		$course = $_SESSION['course'];
 		$section = $_SESSION['section'];
 		$exam = $_SESSION['exam'];
-		return "INSERT INTO answerkeys (answerkeyarray, course, section, exam) VALUES ('$answerKeys', '$course', '$section', '$exam')";
+		$result3 = mysql_query("INSERT INTO answerkeys(answerkeyarray,course,section,exam) VALUES('$answerKeys','$course','$section','$exam')") or die(mysql_error());
+		//echo mysql_error();
+		//var_dump($result3);
 	}
 	
 	echo '
@@ -266,6 +271,9 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 			{
 				$correctAnswers[$i2][$i3]=0;
 			}
+			
+			$result5 = mysql_query("DELETE FROM answerkeys WHERE course='".$_SESSION['course']."' AND section='".$_SESSION['section']."' AND exam ='".$_SESSION['exam']."'") or die(mysql_error());
+
 		}
 		
 		if($checkCheckBox1)
@@ -298,7 +306,8 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 							
 			$correctAnswers[$i2][1] =1;
 			//var_dump(serialize($correctAnswers));
-			$result3 = mysql_query(query3(serialize($correctAnswers))) or die(mysql_error());
+			//$result3 = mysql_query(query3(serialize($correctAnswers))) or die(mysql_error());
+			query3(serialize($correctAnswers));
 			//var_dump($result3);
 			
 			
@@ -336,8 +345,8 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
 			
 			$correctAnswers[$i2][2] =1;	
-			$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error())); 
-			
+			//$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error())); 
+			query3(serialize($correctAnswers));
 			$check=true;
 			
 			
@@ -353,8 +362,8 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
 
 			$correctAnswers[$i2][3] =1;	
-			$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error())); 
-			
+			//$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error())); 
+			query3(serialize($correctAnswers));
 			$check=true;
 			
 			$old[$i2]=serialize($questions[$i2]);			
@@ -369,8 +378,8 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
 
 			$correctAnswers[$i2][4] =1;	
-			$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error())); 
-			
+			//$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error())); 
+			query3(serialize($correctAnswers));
 			
 			$check=true;
 			
@@ -386,10 +395,10 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 			$result2 = mysql_query(query2(serialize($questions[$i2]),$old[$i2])) or die(mysql_error());
 
 			$correctAnswers[$i2][5] =1;	
-			var_dump(query3(serialize($correctAnswers)));
-			$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error()));
-			echo mysql_error();
-			var_dump($result3);
+			query3(serialize($correctAnswers));
+			//$result3 = mysql_query(query3(serialize($correctAnswers)) or die(mysql_error()));
+			//echo mysql_error();
+			//var_dump($result3);
 
 			
 			$check=true;
@@ -400,7 +409,7 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 		
 		if($check==true)
 		{
-		//	echo '<meta http-equiv="refresh" content="0">';//refresh page
+			echo '<meta http-equiv="refresh" content="0">';//refresh page
 		//	$_SESSION['start']=false;
 		}
 		
