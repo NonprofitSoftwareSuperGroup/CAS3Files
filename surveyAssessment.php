@@ -17,7 +17,7 @@
 
   $query = "SELECT * FROM question";//database query
   $result = mysql_query($query) or die(mysql_error());
-  $counter = 0;
+  $counter = 1;
   $serializedQuestions = array();
   $questionObjects = array();
 
@@ -29,34 +29,34 @@
   }
   ?>
   <form action ="studentFarewell.php" method = "POST"><?php
-  for($i=0; $i<count($serializedQuestions);$i++){
+  for($i=1; $i<=count($serializedQuestions);$i++){
     $questionObjects[$i]= unserialize($serializedQuestions[$i]);
     echo "<br>";
-    echo $i+1 . ".) " . $questionObjects[$i]->get_question();
+    echo $i . ".) " . $questionObjects[$i]->get_question();
     echo "<br>";
-    for($y=0; $y<$questionObjects[$i]->getNumAnswers(); $y++){
-      if($y==0){
-        echo "A.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>1"> <?php echo $questionObjects[$i]->getAnswer1();
-        echo "<br>";
-      }
-
-      if($y==1){  
-        echo "B.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>2"> <?php echo $questionObjects[$i]->getAnswer2();
+    for($y=1; $y<=$questionObjects[$i]->getNumAnswers(); $y++){
+      if($y==1){
+        echo "A.) "?><input type="checkbox" name="studentAnswer<?php echo $i?>1"> <?php echo $questionObjects[$i]->getAnswer1();
         echo "<br>";
       }
 
       if($y==2){  
-        echo "C.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>3"> <?php echo $questionObjects[$i]->getAnswer3();        
+        echo "B.) "?><input type="checkbox" name="studentAnswer<?php echo $i?>2"> <?php echo $questionObjects[$i]->getAnswer2();
         echo "<br>";
       }
 
       if($y==3){  
-        echo "D.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>4"> <?php echo $questionObjects[$i]->getAnswer4();
+        echo "C.) "?><input type="checkbox" name="studentAnswer<?php echo $i?>3"> <?php echo $questionObjects[$i]->getAnswer3();        
         echo "<br>";
       }
 
       if($y==4){  
-        echo "E.) "?><input type="checkbox" name="studentAnswer<?php echo $y?>5"> <?php echo $questionObjects[$i]->getAnswer5();        
+        echo "D.) "?><input type="checkbox" name="studentAnswer<?php echo $i?>4"> <?php echo $questionObjects[$i]->getAnswer4();
+        echo "<br>";
+      }
+
+      if($y==5){  
+        echo "E.) "?><input type="checkbox" name="studentAnswer<?php echo $i?>5"> <?php echo $questionObjects[$i]->getAnswer5();        
         echo "<br>";
       }
       
