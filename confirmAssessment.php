@@ -11,7 +11,8 @@
   <div class="small-6 large-8 columns">
 	<?php
 		include('class/questionClass.php');
-				
+		
+		
 		$course = $_SESSION['course'];
 		$exam = $_SESSION['exam'];
 		$section = $_SESSION['section'];
@@ -22,7 +23,7 @@
 		$questionObj = array();//array containing question Objects 
 		$serializedQuestions = array();//array containing the serialized versions of questions
 		$correctAnswers = array();//array containing the correct answers for questions
-		
+		$whichAnswersCorrect = array();
 		for($i = 1; $i <= $numQuestions; $i++){//loop through numQuestiosn(however many the user put in on last page)
 			
 			$questions[$i] = $_POST['question' . $i];//assign the question to the question array
@@ -30,49 +31,42 @@
 			$questionObj[$i]= new Question($questions[$i]);
 			for($y = 1; $y <= 5; $y++){
 				$answers[$i][$y] = $_POST['answer' . $i.$y];//get answers from form and add them to question object
-				if($y==1)
-				{
+				if($y==1){
 					$questionObj[$i]->setAnswer1($answers[$i][$y]);
 					$questionObj[$i]->incrementNumAnswers();
-					}
-				if($y==2)
-				{
+				}
+				if($y==2){
 					$questionObj[$i]->setAnswer2($answers[$i][$y]);
 					$questionObj[$i]->incrementNumAnswers();
-					}
-				if($y==3)
-				{
+				}
+				if($y==3){
 					$questionObj[$i]->setAnswer3($answers[$i][$y]);
 					$questionObj[$i]->incrementNumAnswers();
-					}
-				if($y==4)
-				{
+				}
+				if($y==4){
 					$questionObj[$i]->setAnswer4($answers[$i][$y]);
 					$questionObj[$i]->incrementNumAnswers();
-					}
-					if($y==5)
-				{
+				}
+				if($y==5){
 					$questionObj[$i]->setAnswer5($answers[$i][$y]);
 					$questionObj[$i]->incrementNumAnswers();
-					}
-					
-				//$questionObj[$i]->setProf($_SESSION['user']);//used in modify.php      if using professors can only edit questions they created
-					
-				if(isset($_POST['checkbox' . $i.$y]))//if checkbox is clicked
-					$correctAnswers[$i][$y] = $_POST['checkbox' . $i.$y];//save the value(this will correspond to the answer number, so the end result is that each question object has the answer numbers that are correct)
-				
-				if(isset($correctAnswers[$i][$y])){//add it to the question object
-						$x = $i . "." . $y;   
-						$questionObj[$i]->addCorrectAnswer($x);	
-						$questionObj[$i]->setQuestionNum($i);
-				}	
-				
+				}
 
+				if(isset($_POST['checkbox' . $i.$y])){//if checkbox is clicked
+					$whichAnswersCorrect[$i][$y] = $_POST['checkbox' . $i.$y];//save the value(this will correspond to the answer number, so the end result is that each question object has the answer numbers that are correct)
+					$x = $i . "." . $y;
+					$questionObj[$i]->addCorrectAnswer($x);	
+				}
+				if(isset($_POST['checkbox' . $i.$y])){
+					$correctAnswers[$i][$y] =1;	
+				}else
+					$correctAnswers[$i][$y] = 0;
+				 
 			
 			}
 			$serializedQuestions[$i] = serialize($questionObj[$i]);
 
-			$query = "INSERT INTO question (question, course, section, exam) VALUES ('$serializedQuestions[$i]','$course','$section','$exam')";//exam added
+			$query = "INSERT INTO question (question, course, section) VALUES ('$serializedQuestions[$i]','$course','$section')";
 			$result = mysql_query($query) or die(mysql_error());
 
 			$test = unserialize($serializedQuestions[$i]);
@@ -96,6 +90,9 @@
 			//echo $row['SerialNum'];
 			*/
 		}
+			$serializedAnswerKey = serialize($correctAnswers);
+			$query = "INSERT INTO answerkeys (answerKeyArray, course, section) VALUES ('$serializedAnswerKey', '$course', '$section')";
+						$result = mysql_query($query) or die(mysql_error());
 
 	?>
 	<br>
