@@ -5,17 +5,27 @@
 
 if(isset($_POST['username']) && isset($_POST['password']))
 {
-        $username =  mysql_real_escape_string($_POST['username']);
-        $password = mysql_real_escape_string($_POST['password']);
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $admin = 1;
 
         $query = "SELECT * FROM professor WHERE username='".$username."' AND password='".$password."' LIMIT 1";
         $result = mysql_query($query) or die(mysql_error());
 
-        if(mysql_num_rows($result) == 1)
-		{
-			
-		  $_SESSION['user']=$username;      //if using professors can only edit questions they created
-		  
+        $queryA = "SELECT * FROM professor WHERE username='".$username."' AND password='".$password."' AND Admin='".$admin."' LIMIT 1";
+        $resultA = mysql_query($queryA) or die(mysql_error());
+
+        if(mysql_num_rows($resultA) == 1){
+
+          echo "Thanks for logging in ADMIN";
+
+          print "<script>";
+          print ' window.open("adminHome.php","_self","false") ';
+          print "</script>";
+
+        }
+         else if(mysql_num_rows($result) == 1){
+
           echo "Thanks for logging in";
 
           print "<script>";
@@ -29,7 +39,6 @@ if(isset($_POST['username']) && isset($_POST['password']))
         }
 
  }
- 
  //student login module
 if(isset($_POST['otk']) && isset($_POST['courseSelect']) && isset($_POST['courseSection']))
 {
