@@ -33,15 +33,24 @@
 		correctly answering the question, you should be taken to the proper course assessment.</p>
     </div>
   </dd>
-  <dd>
-    <a href="#panel3">Other</a>
+    <dd>
+    <a href="#panel3">Modify Assessment</a>
     <div id="panel3" class="content">
-     <p>This space is reserved for other issues that the user might run into.</p>
+      <p>Type in the aproprate text fields to change the questions and answers. By checking boxes next to the answers you
+	  replace the previous index of the correct answers(answer 1 and 2 are correct, ect.) If you are having trouble you should
+		exit the website and try again. If problems persist then you should report the error. See the Report Issues section
+		of this help page.</p>
     </div>
   </dd>
   <dd>
-    <a href="#panel4">Report Issues</a>
+    <a href="#panel4">Other</a>
     <div id="panel4" class="content">
+     <p>This space is reserved for other issues that the user might run into.</p>
+    </div>
+  </dd>
+	<dd>
+    <a href="#panel5">Report Issues</a>
+    <div id="panel5" class="content">
       <p>To report bugs please email admin@CAS3.com</p>
     </div>
   </dd>

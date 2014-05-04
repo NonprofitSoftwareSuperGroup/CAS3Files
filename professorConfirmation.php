@@ -63,10 +63,13 @@
 			//sets each student->email and student-> to variable
 			$email = $students[$y]->email;
 			$otk = $students[$y]->key;
-			$used = "NO";
+			//$used = "NO";
+			$exam = $_SESSION['exam'];
+			$course = $_SESSION['course'];
+			$section = $_SESSION['section'];
 
 			//add email. otk and boolean used to student table in cas3database
-			$query = "INSERT INTO students (email, otk, used) VALUES ('$email','$otk','$used')";
+			$query = "INSERT INTO students (email, otk, course, section, exam) VALUES ('$email','$otk','$course','$section','$exam')";//exam added
 			$result = mysql_query($query) or die(mysql_error());
 
 			//Send emails and keys

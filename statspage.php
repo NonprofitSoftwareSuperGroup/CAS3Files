@@ -8,16 +8,18 @@
 <div class="row">
  <div class="small-6 large-2 columns"> Left part of the grid</div>
 
- 
-  <form method="POST" action="modify.php" >
-    <div class = "small-3 large-6 columns">
-         <h3>Modify Assessment</h3><br><br>
+  <div class="small-6 large-8 columns">
+  <h1> View Statistics </h1>
+
+    <form method="POST" action="statistics.php" >
+    <div class = "small-3 large-8 columns">
+         <h3>Select Course and Section</h3><br><br>
          <label>Course: 
           <select name="courseSelect"> <!-- Added name -->
-            <option value="CMPT-280">CMPT-280</option>
-            <option value="CMPT-281">CMPT-281</option>
-            <option value="CMPT-371">CMPT-371</option>
-            <option value="CMPT-372">CMPT-372</option>
+            <option value="CMPT 280">CMPT-280</option>
+            <option value="CMPT 281">CMPT-281</option>
+            <option value="CMPT 371">CMPT-371</option>
+            <option value="CMPT 372">CMPT-372</option>
           </select>
         </label>
 
@@ -30,22 +32,13 @@
             <option value="4">4</option>
           </select>
         </label>
-		
-		        <label>Entry or Exit Exam: 
-          <!--  use for loop to display more -->
-          <select name="examSelect"> <!-- Added name -->
-            <option value="entry">ENTRY</option>
-            <option value="exit">EXIT</option>
-          </select>
 
-        </label>
+        <div class="small-6 small-centered columns">
+          <input class="center button [tiny small large]" type="submit" value="Go" />
+        </div>  
+  			
+  </div>
 
-	<div class="small-6 small-centered columns">
-          <input class="center button [tiny small large]" type="submit" value="Modify" />
-        </div>
-	</form>
-
-	</div>
  <div class="small-12 large-2 columns"> Right part of the grid</div>
 </div>
 
