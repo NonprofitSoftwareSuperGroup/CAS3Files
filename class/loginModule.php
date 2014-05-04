@@ -7,11 +7,24 @@ if(isset($_POST['username']) && isset($_POST['password']))
 {
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $admin = 1;
 
         $query = "SELECT * FROM professor WHERE username='".$username."' AND password='".$password."' LIMIT 1";
         $result = mysql_query($query) or die(mysql_error());
 
-        if(mysql_num_rows($result) == 1){
+        $queryA = "SELECT * FROM professor WHERE username='".$username."' AND password='".$password."' AND Admin='".$admin."' LIMIT 1";
+        $resultA = mysql_query($queryA) or die(mysql_error());
+
+        if(mysql_num_rows($resultA) == 1){
+
+          echo "Thanks for logging in ADMIN";
+
+          print "<script>";
+          print ' window.open("adminHome.php","_self","false") ';
+          print "</script>";
+
+        }
+         else if(mysql_num_rows($result) == 1){
 
           echo "Thanks for logging in";
 
