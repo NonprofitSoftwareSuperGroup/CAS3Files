@@ -27,11 +27,11 @@
 		$whichAnswersCorrect = array();
 		for($i = 1; $i <= $numQuestions; $i++){//loop through numQuestiosn(however many the user put in on last page)
 			
-			$questions[$i] = $_POST['question' . $i];//assign the question to the question array
+			$questions[$i] = mysql_real_escape_string($_POST['question' . $i]);//assign the question to the question array
 			//echo $questions[$i];
 			$questionObj[$i]= new Question($questions[$i]);
 			for($y = 1; $y <= 5; $y++){
-				$answers[$i][$y] = $_POST['answer' . $i.$y];//get answers from form and add them to question object
+				$answers[$i][$y] = mysql_real_escape_string($_POST['answer' . $i.$y]);//get answers from form and add them to question object
 				if($y==1){
 					$questionObj[$i]->setAnswer1($answers[$i][$y]);
 					$questionObj[$i]->incrementNumAnswers();

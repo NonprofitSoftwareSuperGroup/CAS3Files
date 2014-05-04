@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2014 at 10:25 PM
+-- Generation Time: May 03, 2014 at 05:21 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -23,22 +23,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `answerkeys`
+-- Table structure for table `answer_keys`
 --
 
-CREATE TABLE IF NOT EXISTS `answerkeys` (
-  `answerkeyarray` varchar(1000) NOT NULL,
-  `course` varchar(15) NOT NULL,
-  `section` int(2) NOT NULL,
-  `exam` varchar(5) NOT NULL
+CREATE TABLE IF NOT EXISTS `answer_keys` (
+  `Serials` varchar(100) NOT NULL,
+  `Course` varchar(15) NOT NULL,
+  `Section` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `answerkeys`
+-- Dumping data for table `answer_keys`
 --
 
-INSERT INTO `answerkeys` (`answerkeyarray`, `course`, `section`, `exam`) VALUES
-('a:1:{i:1;a:5:{i:1;i:1;i:2;i:0;i:3;i:0;i:4;i:0;i:5;i:0;}}', 'CMPT-280', 1, 'entry');
+INSERT INTO `answer_keys` (`Serials`, `Course`, `Section`) VALUES
+('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
+('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
+('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
+('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
+('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
+('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
+('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
+('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
+('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1);
 
 -- --------------------------------------------------------
 
@@ -80,7 +87,13 @@ CREATE TABLE IF NOT EXISTS `professor` (
 
 INSERT INTO `professor` (`username`, `password`) VALUES
 ('ben', 'pass'),
-('user1', 'pastword');
+('user1', 'go'),
+('ben', 'pass'),
+('user1', 'go'),
+('ben', 'pass'),
+('user1', 'go'),
+('ben', 'pass'),
+('user1', 'go');
 
 -- --------------------------------------------------------
 
@@ -94,20 +107,23 @@ CREATE TABLE IF NOT EXISTS `question` (
   `course` varchar(10) NOT NULL,
   `section` int(10) NOT NULL,
   `exam` text NOT NULL,
-  `prof` text NOT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`index`, `question`, `course`, `section`, `exam`, `prof`) VALUES
-(35, 'O:8:"Question":10:{s:7:"answer1";s:7:"sdfgfdg";s:7:"answer2";s:5:"dfdff";s:7:"answer3";s:4:"gggg";s:7:"answer4";s:5:"hhhhh";s:7:"answer5";s:9:"ggggggggg";s:8:"question";s:3:"qqq";s:14:"correctAnswers";a:1:{i:0;s:3:"1.5";}s:17:"numCorrectAnswers";i:1;s:10:"numAnswers";i:5;s:11:"questionNum";i:1;}', 'CMPT-372', 1, 'entry', 'ben'),
-(36, 'O:8:"Question":10:{s:7:"answer1";s:5:"ggggg";s:7:"answer2";s:5:"hhhhh";s:7:"answer3";s:3:"jjj";s:7:"answer4";s:9:"jjtytjtyj";s:7:"answer5";s:8:"dfghdfgh";s:8:"question";s:4:"dddd";s:14:"correctAnswers";a:1:{i:0;s:3:"1.4";}s:17:"numCorrectAnswers";i:1;s:10:"numAnswers";i:5;s:11:"questionNum";i:1;}', 'CMPT-280', 1, 'entry', 'ben'),
-(37, 'O:8:"Question":10:{s:7:"answer1";s:5:"ggggg";s:7:"answer2";s:5:"hhhhh";s:7:"answer3";s:3:"jjj";s:7:"answer4";s:9:"jjtytjtyj";s:7:"answer5";s:8:"dfghdfgh";s:8:"question";s:4:"dddd";s:14:"correctAnswers";a:1:{i:0;s:3:"1.4";}s:17:"numCorrectAnswers";i:1;s:10:"numAnswers";i:5;s:11:"questionNum";i:1;}', 'CMPT-280', 1, 'entry', 'ben'),
-(38, 'O:8:"Question":10:{s:7:"answer1";s:5:"ggggg";s:7:"answer2";s:5:"hhhhh";s:7:"answer3";s:3:"jjj";s:7:"answer4";s:9:"jjtytjtyj";s:7:"answer5";s:8:"dfghdfgh";s:8:"question";s:4:"dddd";s:14:"correctAnswers";a:1:{i:0;s:3:"1.4";}s:17:"numCorrectAnswers";i:1;s:10:"numAnswers";i:5;s:11:"questionNum";i:1;}', 'CMPT-280', 1, 'entry', 'ben'),
-(39, 'O:8:"Question":10:{s:7:"answer1";s:7:"sdfgfds";s:7:"answer2";s:4:"gggg";s:7:"answer3";s:3:"ddd";s:7:"answer4";s:3:"sss";s:7:"answer5";s:4:"aaaa";s:8:"question";s:4:"sdfd";s:14:"correctAnswers";a:1:{i:0;s:3:"1.5";}s:17:"numCorrectAnswers";i:1;s:10:"numAnswers";i:5;s:11:"questionNum";i:1;}', 'CMPT-281', 1, 'entry', 'ben');
+INSERT INTO `question` (`index`, `question`, `course`, `section`, `exam`) VALUES
+(2, 'O:8:"Question":7:{s:7:"answer1";s:2:"a1";s:7:"answer2";s:2:"b1";s:7:"answer3";s:2:"c2";s:7:"answer4";s:2:"d3";s:8:"question";s:10:"Question 2";s:14:"correctAnswers";a:2:{i:0;s:3:"1.3";i:1;s:3:"1.4";}s:17:"numCorrectAnswers";i:2;}', 'CMPT-280', 3, 'entry'),
+(3, 'O:8:"Question":7:{s:7:"answer1";s:12:"who the fuck";s:7:"answer2";s:14:"where the fuck";s:7:"answer3";s:12:"why the fuck";s:7:"answer4";s:13:"fuck the fuck";s:8:"question";s:5:"Fuck?";s:14:"correctAnswers";a:4:{i:0;s:3:"1.1";i:1;s:3:"1.2";i:2;s:3:"1.3";i:3;s:3:"1.4";}s:17:"numCorrectAnswers";i:4;}', 'CMPT-371', 4, 'entry'),
+(4, 'O:8:"Question":7:{s:7:"answer1";s:7:"keanen ";s:7:"answer2";s:4:"kell";s:7:"answer3";s:4:"matt";s:7:"answer4";s:10:"some nigga";s:8:"question";s:22:"Who loves orange soda?";s:14:"correctAnswers";a:1:{i:0;s:3:"2.1";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-371', 4, 'entry'),
+(5, 'O:8:"Question":7:{s:7:"answer1";s:3:"gay";s:7:"answer2";s:5:"alien";s:7:"answer3";s:4:"fast";s:7:"answer4";s:6:"jewish";s:8:"question";s:10:"Benham is?";s:14:"correctAnswers";a:3:{i:0;s:3:"3.1";i:1;s:3:"3.2";i:2;s:3:"3.4";}s:17:"numCorrectAnswers";i:3;}', 'CMPT-371', 4, 'exit'),
+(6, 'O:8:"Question":7:{s:7:"answer1";s:29:"I said what what in the butt.";s:7:"answer2";s:9:"HA Gaaaay";s:7:"answer3";s:13:"Whisper girl?";s:7:"answer4";s:26:"Antoniou. George Antoniou.";s:8:"question";s:22:"What what in the butt?";s:14:"correctAnswers";a:1:{i:0;s:3:"1.1";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1, 'entry'),
+(7, 'O:8:"Question":7:{s:7:"answer1";s:4:"Cake";s:7:"answer2";s:5:"Drake";s:7:"answer3";s:7:"Drizzle";s:7:"answer4";s:5:"Dizzy";s:8:"question";s:6:"Drizzy";s:14:"correctAnswers";a:1:{i:0;s:3:"2.2";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1, 'entry'),
+(8, 'O:8:"Question":7:{s:7:"answer1";s:5:"Girls";s:7:"answer2";s:4:"Dogs";s:7:"answer3";s:3:"Boy";s:7:"answer4";s:16:"Go Fuck Yourself";s:8:"question";s:8:"Fall Out";s:14:"correctAnswers";a:1:{i:0;s:3:"3.3";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1, 'exit'),
+(13, 'O:8:"Question":10:{s:7:"answer1";s:3:"ans";s:7:"answer2";s:7:"another";s:7:"answer3";s:11:"correct Ans";s:7:"answer4";s:13:"some Question";s:7:"answer5";s:7:"another";s:8:"question";s:10:"A Question";s:14:"correctAnswers";a:1:{i:0;s:3:"1.3";}s:17:"numCorrectAnswers";i:1;s:10:"numAnswers";i:5;s:11:"questionNum";i:1;}', 'CMPT-280', 3, 'exit'),
+(14, 'O:8:"Question":10:{s:7:"answer1";s:3:"one";s:7:"answer2";s:3:"two";s:7:"answer3";s:5:"three";s:7:"answer4";s:4:"four";s:7:"answer5";s:4:"five";s:8:"question";s:1:"Q";s:14:"correctAnswers";a:2:{i:0;s:3:"2.3";i:1;s:3:"2.5";}s:17:"numCorrectAnswers";i:2;s:10:"numAnswers";i:5;s:11:"questionNum";i:2;}', 'CMPT-280', 3, 'exit');
 
 -- --------------------------------------------------------
 
@@ -123,25 +139,18 @@ CREATE TABLE IF NOT EXISTS `students` (
   `Section` int(10) NOT NULL,
   `exam` text NOT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `students`
 --
 
 INSERT INTO `students` (`index`, `email`, `otk`, `course`, `Section`, `exam`) VALUES
-(24, 'kellerp2@mail.montclair.edu', '8448', 'CMPT-280', 3, 'exit'),
-(25, 'kellerp2@mail.montclair.edu', '1907', 'CMPT-280', 2, 'entry'),
-(26, 'kellerp2@mail.montclair.edu', '7679', 'CMPT-280', 2, 'exit'),
-(27, 'kellerp2@mail.montclair.edu', '1626', 'CMPT-371', 3, 'entry'),
-(28, 'kellerp2@mail.montclair.edu', '9568', 'CMPT-371', 3, 'exit'),
-(29, 'kellerp2@mail.montclair.edu', '8405', 'CMPT-280', 1, 'entry'),
-(30, 'kellerp2@mail.montclair.edu', '8278', 'CMPT-372', 1, 'entry'),
-(31, 'kellerp2@mail.montclair.edu', '9678', 'CMPT-280', 1, 'entry'),
-(32, 'kellerp2@mail.montclair.edu', '9587', 'CMPT-280', 1, 'entry'),
-(33, 'kellerp2@mail.montclair.edu', '5378', 'CMPT-372', 1, 'entry'),
-(34, 'kellerp2@mail.montclair.edu', '5766', 'CMPT-280', 1, 'entry'),
-(35, 'kellerp2@mail.montclair.edu', '2774', 'CMPT-281', 1, 'entry');
+(16, 'matt@aol.com', '7315', 'CMPT-281', 4, 'entry'),
+(17, 'joe@aol.com', '3281', 'CMPT-280', 1, 'exit'),
+(18, 'peter@aol.com', '3816', 'CMPT-371', 2, 'entry'),
+(19, 'sam@aol.com', '5640', 'CMPT-372', 1, 'entry'),
+(24, 'kellerp2@mail.montclair.edu', '8448', 'CMPT-280', 3, 'exit');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

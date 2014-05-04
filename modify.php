@@ -12,9 +12,9 @@ if((isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_P
 	if(isset($_POST['courseSelect']) && isset($_POST['sectionSelect']) && isset($_POST['examSelect']))
 	{
 		
-		$course = $_POST['courseSelect'];
-		$section = $_POST['sectionSelect'];
-		$exam = $_POST['examSelect'];
+		$course = mysql_real_escape_string($_POST['courseSelect']);
+		$section = mysql_real_escape_string($_POST['sectionSelect']);
+		$exam = mysql_real_escape_string($_POST['examSelect']);
 		//echo $exam;
 		
 		//set to sessions because the page refreshs to show the prof the edits made

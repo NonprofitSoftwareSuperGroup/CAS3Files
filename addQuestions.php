@@ -46,7 +46,7 @@ a question form the number of forms depends on how many questions the professor 
     <h3>
     <?php
     //Display page info, course, section, number if questions
-    echo $course . " - " . $section . " - Number of questions - " .$questions;
+    echo $course . " - " . $section . " - Number of questions - " . $questions. "<br>" . $exam;
     ?>
     </h3>
  
