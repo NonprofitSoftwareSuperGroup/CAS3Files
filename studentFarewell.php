@@ -14,14 +14,16 @@
   $email = $_SESSION['email'];  //use to set used to delete row
   $course = $_SESSION['courseName'];
   $section = $_SESSION['section'];
-  echo $email;
-  echo $course;
-  echo $section;//get info
+  //echo $email;
+  //echo $course;
+  //echo $section;//get info
   $keyArray = array();//declare the array that will be the answer key
 
-  //WE HAVE TO REMEMBER TO UNCOMMENT THESE LINES BEFORE SUBMITTING BUT THEY MAKE TESTING A PAIN IN THE ASS
-  //$query3 = "DELETE FROM students WHERE email='".$email."' AND section='".$section."' AND course='".$course."' LIMIT 1";
-  //$result3 = mysql_query($query3) or die(mysql_error());
+  //comment out the two lines below when testing
+
+  $query3 = "DELETE FROM students WHERE email='".$email."' AND section='".$section."' AND course='".$course."' LIMIT 1";
+  $result3 = mysql_query($query3) or die(mysql_error());
+
   //delete student from database once they finished exam
   ?>
 
