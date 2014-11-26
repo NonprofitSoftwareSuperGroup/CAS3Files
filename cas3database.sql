@@ -1,157 +1,164 @@
--- phpMyAdmin SQL Dump
--- version 4.1.6
--- http://www.phpmyadmin.net
+-- MySQL dump 10.13  Distrib 5.5.40, for debian-linux-gnu (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: May 03, 2014 at 05:21 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.9
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: cas3database
+-- ------------------------------------------------------
+-- Server version	5.5.40-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `cas3database`
+-- Table structure for table `answerkeys`
 --
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `answerkeys`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `answerkeys` (
+  `index` int(11) NOT NULL AUTO_INCREMENT,
+  `answerKeyArray` text NOT NULL,
+  `course` text NOT NULL,
+  `section` int(11) NOT NULL,
+  `exam` text,
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `answer_keys`
+-- Dumping data for table `answerkeys`
 --
 
-CREATE TABLE IF NOT EXISTS `answer_keys` (
-  `Serials` varchar(100) NOT NULL,
-  `Course` varchar(15) NOT NULL,
-  `Section` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `answer_keys`
---
-
-INSERT INTO `answer_keys` (`Serials`, `Course`, `Section`) VALUES
-('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
-('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
-('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
-('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
-('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
-('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
-('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
-('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1),
-('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}', 'CMPT280', 1);
-
--- --------------------------------------------------------
+LOCK TABLES `answerkeys` WRITE;
+/*!40000 ALTER TABLE `answerkeys` DISABLE KEYS */;
+INSERT INTO `answerkeys` VALUES (4,'a:1:{i:1;a:5:{i:1;i:0;i:2;i:1;i:3;i:1;i:4;i:0;i:5;i:0;}}','CMPT-280',1,'entry'),(5,'a:1:{i:1;a:5:{i:1;i:1;i:2;i:0;i:3;i:1;i:4;i:0;i:5;i:0;}}','CMPT-372',1,'entry');
+/*!40000 ALTER TABLE `answerkeys` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `graded_assessments`
 --
 
-CREATE TABLE IF NOT EXISTS `graded_assessments` (
+DROP TABLE IF EXISTS `graded_assessments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `graded_assessments` (
   `Course` text NOT NULL,
   `Section` int(11) NOT NULL,
   `Grade` int(11) NOT NULL,
   `index` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `graded_assessments`
 --
 
-INSERT INTO `graded_assessments` (`Course`, `Section`, `Grade`, `index`) VALUES
-('CMPT 280', 1, 90, 0),
-('CMPT 280', 1, 80, 1),
-('CMPT 280', 1, 99, 2),
-('CMPT 280', 1, 76, 3);
-
--- --------------------------------------------------------
+LOCK TABLES `graded_assessments` WRITE;
+/*!40000 ALTER TABLE `graded_assessments` DISABLE KEYS */;
+INSERT INTO `graded_assessments` VALUES ('CMPT 280',1,90,0),('CMPT 280',1,80,1),('CMPT 280',1,99,2),('CMPT 280',1,76,3),('CMPT 280',1,50,4),('CMPT 280',1,83,5),('CMPT 280',1,83,5),('CMPT-280',1,25,0),('CMPT-280',1,25,0),('CMPT-280',1,75,0),('CMPT-280',1,100,0),('CMPT-280',1,100,0),('CMPT-280',1,100,0),('CMPT-280',1,100,0),('CMPT-280',1,100,0),('CMPT-280',1,100,0),('CMPT-280',2,100,0),('CMPT-280',1,100,0),('CMPT-280',1,100,0),('CMPT-372',1,100,0),('CMPT-280',1,100,0);
+/*!40000 ALTER TABLE `graded_assessments` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `professor`
 --
 
-CREATE TABLE IF NOT EXISTS `professor` (
-  `username` text COLLATE utf8_unicode_ci NOT NULL,
-  `password` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+DROP TABLE IF EXISTS `professor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `professor` (
+  `username` text NOT NULL,
+  `password` text NOT NULL,
+  `Admin` tinyint(1) NOT NULL,
+  `index` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`index`),
+  UNIQUE KEY `index_2` (`index`),
+  KEY `index` (`index`),
+  KEY `index_3` (`index`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `professor`
 --
 
-INSERT INTO `professor` (`username`, `password`) VALUES
-('ben', 'pass'),
-('user1', 'go'),
-('ben', 'pass'),
-('user1', 'go'),
-('ben', 'pass'),
-('user1', 'go'),
-('ben', 'pass'),
-('user1', 'go');
-
--- --------------------------------------------------------
+LOCK TABLES `professor` WRITE;
+/*!40000 ALTER TABLE `professor` DISABLE KEYS */;
+INSERT INTO `professor` VALUES ('admin','adminPass',1,1),('user1','pass',0,2),('user2','1234',0,3);
+/*!40000 ALTER TABLE `professor` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `question`
 --
 
-CREATE TABLE IF NOT EXISTS `question` (
+DROP TABLE IF EXISTS `question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `question` (
   `index` int(11) NOT NULL AUTO_INCREMENT,
   `question` varchar(10000) NOT NULL,
   `course` varchar(10) NOT NULL,
   `section` int(10) NOT NULL,
   `exam` text NOT NULL,
+  `prof` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`index`, `question`, `course`, `section`, `exam`) VALUES
-(2, 'O:8:"Question":7:{s:7:"answer1";s:2:"a1";s:7:"answer2";s:2:"b1";s:7:"answer3";s:2:"c2";s:7:"answer4";s:2:"d3";s:8:"question";s:10:"Question 2";s:14:"correctAnswers";a:2:{i:0;s:3:"1.3";i:1;s:3:"1.4";}s:17:"numCorrectAnswers";i:2;}', 'CMPT-280', 3, 'entry'),
-(3, 'O:8:"Question":7:{s:7:"answer1";s:12:"who the fuck";s:7:"answer2";s:14:"where the fuck";s:7:"answer3";s:12:"why the fuck";s:7:"answer4";s:13:"fuck the fuck";s:8:"question";s:5:"Fuck?";s:14:"correctAnswers";a:4:{i:0;s:3:"1.1";i:1;s:3:"1.2";i:2;s:3:"1.3";i:3;s:3:"1.4";}s:17:"numCorrectAnswers";i:4;}', 'CMPT-371', 4, 'entry'),
-(4, 'O:8:"Question":7:{s:7:"answer1";s:7:"keanen ";s:7:"answer2";s:4:"kell";s:7:"answer3";s:4:"matt";s:7:"answer4";s:10:"some nigga";s:8:"question";s:22:"Who loves orange soda?";s:14:"correctAnswers";a:1:{i:0;s:3:"2.1";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-371', 4, 'entry'),
-(5, 'O:8:"Question":7:{s:7:"answer1";s:3:"gay";s:7:"answer2";s:5:"alien";s:7:"answer3";s:4:"fast";s:7:"answer4";s:6:"jewish";s:8:"question";s:10:"Benham is?";s:14:"correctAnswers";a:3:{i:0;s:3:"3.1";i:1;s:3:"3.2";i:2;s:3:"3.4";}s:17:"numCorrectAnswers";i:3;}', 'CMPT-371', 4, 'exit'),
-(6, 'O:8:"Question":7:{s:7:"answer1";s:29:"I said what what in the butt.";s:7:"answer2";s:9:"HA Gaaaay";s:7:"answer3";s:13:"Whisper girl?";s:7:"answer4";s:26:"Antoniou. George Antoniou.";s:8:"question";s:22:"What what in the butt?";s:14:"correctAnswers";a:1:{i:0;s:3:"1.1";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1, 'entry'),
-(7, 'O:8:"Question":7:{s:7:"answer1";s:4:"Cake";s:7:"answer2";s:5:"Drake";s:7:"answer3";s:7:"Drizzle";s:7:"answer4";s:5:"Dizzy";s:8:"question";s:6:"Drizzy";s:14:"correctAnswers";a:1:{i:0;s:3:"2.2";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1, 'entry'),
-(8, 'O:8:"Question":7:{s:7:"answer1";s:5:"Girls";s:7:"answer2";s:4:"Dogs";s:7:"answer3";s:3:"Boy";s:7:"answer4";s:16:"Go Fuck Yourself";s:8:"question";s:8:"Fall Out";s:14:"correctAnswers";a:1:{i:0;s:3:"3.3";}s:17:"numCorrectAnswers";i:1;}', 'CMPT-280', 1, 'exit'),
-(13, 'O:8:"Question":10:{s:7:"answer1";s:3:"ans";s:7:"answer2";s:7:"another";s:7:"answer3";s:11:"correct Ans";s:7:"answer4";s:13:"some Question";s:7:"answer5";s:7:"another";s:8:"question";s:10:"A Question";s:14:"correctAnswers";a:1:{i:0;s:3:"1.3";}s:17:"numCorrectAnswers";i:1;s:10:"numAnswers";i:5;s:11:"questionNum";i:1;}', 'CMPT-280', 3, 'exit'),
-(14, 'O:8:"Question":10:{s:7:"answer1";s:3:"one";s:7:"answer2";s:3:"two";s:7:"answer3";s:5:"three";s:7:"answer4";s:4:"four";s:7:"answer5";s:4:"five";s:8:"question";s:1:"Q";s:14:"correctAnswers";a:2:{i:0;s:3:"2.3";i:1;s:3:"2.5";}s:17:"numCorrectAnswers";i:2;s:10:"numAnswers";i:5;s:11:"questionNum";i:2;}', 'CMPT-280', 3, 'exit');
-
--- --------------------------------------------------------
+LOCK TABLES `question` WRITE;
+/*!40000 ALTER TABLE `question` DISABLE KEYS */;
+INSERT INTO `question` VALUES (165,'O:8:\"Question\":10:{s:7:\"answer1\";s:10:\"sdfgsdfgsd\";s:7:\"answer2\";s:12:\"sdfgsdfgsdfg\";s:7:\"answer3\";s:10:\"sfdgsdfgsd\";s:7:\"answer4\";s:7:\"gfgsdfg\";s:7:\"answer5\";s:4:\"sdgf\";s:8:\"question\";s:3:\"sfg\";s:14:\"correctAnswers\";a:2:{i:0;s:3:\"1.2\";i:1;s:3:\"1.3\";}s:17:\"numCorrectAnswers\";i:2;s:10:\"numAnswers\";i:5;s:11:\"questionNum\";i:1;}','CMPT-280',1,'entry',''),(166,'O:8:\"Question\":10:{s:7:\"answer1\";s:7:\"asddddd\";s:7:\"answer2\";s:8:\"asdfasdf\";s:7:\"answer3\";s:4:\"dddd\";s:7:\"answer4\";s:13:\"asdfasdf safd\";s:7:\"answer5\";s:14:\"asdfs asdfasdf\";s:8:\"question\";s:6:\"asdfas\";s:14:\"correctAnswers\";a:2:{i:0;s:3:\"1.1\";i:1;s:3:\"1.3\";}s:17:\"numCorrectAnswers\";i:2;s:10:\"numAnswers\";i:5;s:11:\"questionNum\";i:1;}','CMPT-372',1,'entry','');
+/*!40000 ALTER TABLE `question` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `students`
 --
 
-CREATE TABLE IF NOT EXISTS `students` (
+DROP TABLE IF EXISTS `students`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `students` (
   `index` double NOT NULL AUTO_INCREMENT,
   `email` varchar(30) NOT NULL,
   `otk` varchar(30) NOT NULL,
+  `used` varchar(5) NOT NULL,
   `course` text NOT NULL,
   `Section` int(10) NOT NULL,
-  `exam` text NOT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`index`, `email`, `otk`, `course`, `Section`, `exam`) VALUES
-(16, 'matt@aol.com', '7315', 'CMPT-281', 4, 'entry'),
-(17, 'joe@aol.com', '3281', 'CMPT-280', 1, 'exit'),
-(18, 'peter@aol.com', '3816', 'CMPT-371', 2, 'entry'),
-(19, 'sam@aol.com', '5640', 'CMPT-372', 1, 'entry'),
-(24, 'kellerp2@mail.montclair.edu', '8448', 'CMPT-280', 3, 'exit');
+LOCK TABLES `students` WRITE;
+/*!40000 ALTER TABLE `students` DISABLE KEYS */;
+INSERT INTO `students` VALUES (3,'pkeller@gmail.com','2810','no','CMPT-281',1),(301,'jpietrzak@gmail.com','3710','no','CMPT-371',1),(302,'sdfgsdg@sfgsg.com','4777','NO','CMPT-280',1);
+/*!40000 ALTER TABLE `students` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-11-26 17:14:38
